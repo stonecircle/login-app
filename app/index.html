@@ -11,8 +11,40 @@
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/oauthloginapp.css">
+
+    <script>
+    if (/\b(http|https):\/\/local/.test(window.location.href)) {
+      window._trackJs = {
+        onError: function(payload, err) {
+          //filter out 400 network events from logs
+          payload.network = payload.network.filter(function(item) {
+            if (item.statusCode !== 400) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+          return true
+        },
+        //enable trackjs if its anything but local
+        enabled: true
+      };
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-25832783-4', 'auto');
+      ga('send', 'pageview');
+    }
+    </script>
+    <script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" data-token="184392c1dc6b4691a856cce8b46a58f9"></script>
+    <script>window.jQuery || document.write('<script src="/app/bower_components/jquery/jquery.js"><\/script>')</script>
+    <script src="/app/bower_components/modernizr/modernizr.js"></script>
+    <script src="/app/bower_components/FitText.js/jquery.fittext.js"></script>
+    <script type="text/javascript" src="/app/scripts/login_full.js"></script>
+    <script src="/app/scripts/depreciated/Placeholders.min.js"></script>
   </head>
-  <body>
+  <body class="narrow fill-grey">
     {{content-for 'body'}}
 
     <script src="assets/vendor.js"></script>
