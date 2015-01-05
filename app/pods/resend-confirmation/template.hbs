@@ -1,0 +1,60 @@
+<div class="account col-xs-10 col-sm-5 center-block">
+  <div class="email form-group">
+    <label class="sr-only" for="email">Email</label>
+    <input class="input-lg form-control large" id="email" type="email" name="email" placeholder="Email" />
+    <input type="hidden" id="client_id" name="client_id" value="{{escaped_query.client_id}}">
+    <input type="hidden" id="redirect_uri" name="redirect_uri" value="{{escaped_query.redirect_uri}}">
+    <input type="hidden" id="scope" name="scope" value="{{escaped_query.scope}}">
+  </div>
+  <div class="alertbox form-group"></div>
+  {{#if error}}
+  <p id="autherror">{{error}}</p>
+  {{/if}}
+  <div class="spacing-top2">
+    <a class="btn pop blue block" id="submit_form" href="javascript:void(0);"><span>Request confirmation email</span></a>
+  </div>
+  <div class="text-center text-small spacing-top6">
+    <a class="btn hollow" href="#">Sign in</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+  function submit() {
+    var email = $("#email").val();
+    var client_id = $("#client_id").val();
+    var redirect_uri = $("#redirect_uri").val();
+    var scope = $("#scope").val();
+
+    //send the post via ajax
+    if (!validateExists(email, "Email is required", ".forgotPasswordError")) return false;
+
+    $.ajax({
+      type: "POST",
+      url: "/resend_confirmation_email",
+      data: {
+        email: email,
+        client_id: client_id,
+        redirect_uri: redirect_uri,
+        scope: scope
+      },
+      success: function (msg) {
+        showInfo(msg);
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        showError(xhr.responseText);
+      }
+    });
+  }
+
+  $('#submit_form').click(function () {
+    submit();
+  })
+
+  $('#email').keypress(function (e) {
+    if (e.which == 13) {
+      submit();
+    }
+  });
+})
+</script>

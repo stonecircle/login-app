@@ -1,0 +1,56 @@
+<div id="confirm_password" class="account">
+  <form class="account-form" role="form" action="/user/password" method="post">
+    <div class="boxed-inner">
+      {{#if error}}
+      <div class="boxed-title">
+        <h1>Oops! There has been an error!</h1>
+        <p>{{message}}</p>
+      </div>
+      {{else}}
+      {{#unless thanks}}
+      <div class="boxed-title">
+        <h1>Welcome back!</h1>
+        <p>All we need is your new password to keep everything nice and secure</p>
+      </div>
+      <div class="boxed-content">
+        <div class="password dual">
+          <div class="half">
+            <label class="sr-only" for="password">Password</label>
+            <input class="input-lg form-control" id="password" name="password" type="password" placeholder="New Password"/>
+          </div>
+          <div class="half">
+            <label class="sr-only" for="passwordConfirm">Confirm Password</label>
+            <input class="input-lg form-control" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="Confirm Password"/>
+          </div>
+        </div>
+        <input type="hidden" name="userId" value="{{userId}}" />
+        <input type="hidden" name="resetCode" value="{{code}}" />
+        <input type="hidden" name="client_id" value="{{escaped_query.client_id}}">
+        <input type="hidden" name="redirect_uri" value="{{escaped_query.redirect_uri}}">
+        <input type="hidden" name="scope" value="{{escaped_query.scope}}">
+        {{#if error}}
+        <p id="autherror">{{error}}</p>
+        {{/if}}
+      </div>
+    </div>
+    <div class="boxed-bottom">
+      <div class="bottom-inner">
+        <input {{#if app_settings.enable_GA}}onClick="_gaq.push(['_trackEvent', 'user', 'resetPassword', 'localauth.bloo.ie/reset_password',, false]);"{{/if}} type="submit" value="Go" class="btn go" />
+      </div>
+    </div>
+  </form>
+  {{else}}
+  <div class="boxed-title">
+    <h1>Password updated successfully!</h1>
+    <p>You can now use your new password to login</p>
+  </div>
+</div>
+<div class="boxed-bottom">
+  <div class="bottom-inner">
+    <a href="{{success_login}}" class="btn go">Sign in</a>
+  </div>
+</div>
+{{/unless}}
+{{/if}}
+</div>
+</div>

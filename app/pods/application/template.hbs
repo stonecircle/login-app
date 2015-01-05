@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="main spacing-bottom4">
+    <header class="auth-header text-center pad-y4">
+      <h1 class="spacing0">
+        <a class="text-hide" href="#">Blooie</a>
+      </h1>
+    </header>
+    {{{outlet}}}
+  </div>
+  <footer class="auth-footer text-center text-small">
+    <ul class="list-inline">
+      <li>&copy; Blooie, 2015</li>
+      <li><a href="//{{urlPrefix}}{{#if urlPrefix}}.{{/if}}bloo.ie/privacy">Privacy</a></li>
+      <li><a href="//{{urlPrefix}}{{#if urlPrefix}}.{{/if}}bloo.ie/terms">Terms</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+{{#if app_settings.enable_GA}}
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25832783-1']);
+    _gaq.push(['_setDomainName', 'bloo.ie']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+{{/if}}
+<script>
+  $(function() {
+    Placeholders.init();
+    if(!window.addEventListener && document.documentMode && document.documentMode == 7) {
+      $('input[type=password]').each(function() {
+        var self = this;
+        var placeholder = $(this).attr("placeholder") ? $(this).attr("placeholder") : "";
+
+        var fakepass = $('<input type="text" name="fake_pass" id="fake_pass" value="' + placeholder + '"/>');
+        fakepass.insertAfter($(this));
+        $(this).hide();
+        fakepass.focus(function() {
+          $(this).hide(); //  hide the fake password input text
+          $(self).show().focus();
+        });
+
+        // // On blur of the real pass
+        $(this).blur(function() {
+          if($(self).val() == "") { // if the value is empty,
+            $(self).hide(); // hide the real password field
+            fakepass.show(); // show the fake password
+          }
+        });
+      });
+    }
+  });
+</script>
