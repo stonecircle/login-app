@@ -2,9 +2,9 @@
   <div class="email form-group">
     <label class="sr-only" for="email">Email</label>
     <input class="input-lg form-control large" id="email" type="email" name="email" placeholder="Email" />
-    <input type="hidden" id="client_id" name="client_id" value="{{escaped_query.client_id}}">
-    <input type="hidden" id="redirect_uri" name="redirect_uri" value="{{escaped_query.redirect_uri}}">
-    <input type="hidden" id="scope" name="scope" value="{{escaped_query.scope}}">
+    <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
+    <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
+    <input type="hidden" id="scope" name="scope" value="escaped_query.scope">
   </div>
   <div class="alertbox form-group"></div>
   {{#if error}}

@@ -2,7 +2,7 @@
   <form class="account-form spacing-bottom3" role="form" action="/signup" method="post">
     <div class="email form-group">
       <label class="sr-only" for="username">Email</label>
-      <input class="input-lg form-control large" id="username" name="email" type="email" placeholder="Email" value="{{email}}"/>
+      <input class="input-lg form-control large" id="username" name="email" type="email" placeholder="Email" value="email"/>
     </div>
     <div class="emailconfirm form-group">
       <label class="sr-only" for="confirmEmail">Confirm Email address</label>
@@ -19,13 +19,13 @@
     <div class="checkbox text-center text-small">
       <label>
         <input type="checkbox" id="tnc" name="tnc" value="agree" />
-        I have read and accept the <a href="{{blooiewebsite}}/terms" target="_blank">terms</a>.
+        I have read and accept the {{url-prefix-link "bloo.ie/terms" "terms"}}.
       </label>
     </div>
-    <input type="hidden" name="client_id" value="{{escaped_query.client_id}}">
-    <input type="hidden" name="redirect_uri" value="{{escaped_query.redirect_uri}}">
-    <input type="hidden" name="scope" value="{{escaped_query.scope}}">
-    <input type="hidden" name="responseType" value="{{escaped_query.response_type}}">
+    <input type="hidden" name="client_id" value="escaped_query.client_id">
+    <input type="hidden" name="redirect_uri" value="escaped_query.redirect_uri">
+    <input type="hidden" name="scope" value="escaped_query.scope">
+    <input type="hidden" name="responseType" value="escaped_query.response_type">
     <div class="alertbox form-group"></div>
     {{#if error}}
     <p id="signuperror">{{error}}</p>
@@ -34,7 +34,7 @@
       {{!-- <input {{#if app_settings.enable_GA}}onClick="_gaq.push(['_trackEvent', 'Client', 'Signup', 'client.bloo.ie/signup',, false]);"{{/if}} type="submit" value="Sign up" class="btn go" id="requestformbutton"/> --}}
       <a href="#" class="btn pop blue large block login_button"><span>Sign up</span></a>
     </div>
-    <input type="hidden" name="referer" value="{{referer}}" />
+    <input type="hidden" name="referer" value="referer" />
   </form>
   <div class="text-center text-small spacing-top6">
     <a class="btn hollow" href="#">Sign in</a>

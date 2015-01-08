@@ -2,8 +2,8 @@
   <div class="frame">
     <div class="pad2 text-center">
       {{#if error}}
-        <h1>Fiddlesticks!</h1>
-        <h4>{{error}}</h4>
+        <h4>Fiddlesticks!</h4>
+        <p>An error occured. {{error}}.</p>
         <p>Need help getting it sorted? <a href="mailto:help@bloo.ie">Let us know</a>.</p>
       {{else}}
         <h4>Download {{download.name}}</h4>
@@ -14,7 +14,7 @@
       {{#if error}}
         <a class="btn pop blue block" href="/authorize?client_id={{clientId}}&response_type=code&scope={{scope}}&redirect_uri={{redirectUri}}"><span>Verify account</span></a>
       {{else}}
-        <a class="btn pop blue block" href="{{download.link}}"><span>Download</span></a>
+        <a class="btn pop blue block" href="download.link"><span>Download</span></a>
       {{/if}}
     </div>
   </div>
