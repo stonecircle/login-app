@@ -1,6 +1,6 @@
 <div class="account col-xs-10 col-sm-5 center-block">
   <div class="email form-group">
-    <label class="sr-only" for="email">Email</label>
+    <label class="sr-only" for="email">{{t 'label.email'}}</label>
     <input class="input-lg form-control large" id="email" type="email" name="email" placeholder="Email" />
     <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
     <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
@@ -8,13 +8,13 @@
   </div>
   <div class="alertbox form-group"></div>
   {{#if error}}
-  <p id="autherror">{{error}}</p>
+    <p id="autherror">{{error}}</p>
   {{/if}}
   <div class="spacing-top2">
-    <a class="btn pop blue block" id="submit_form" href="javascript:void(0);"><span>Request confirmation email</span></a>
+    <a class="btn pop blue block" id="submit_form" href="javascript:void(0);"><span>{{t 'button.request'}}</span></a>
   </div>
   <div class="text-center text-small spacing-top6">
-    <a class="btn hollow" href="#">Sign in</a>
+    <a class="btn hollow" href="#">{{t 'button.signIn'}}</a>
   </div>
 </div>
 

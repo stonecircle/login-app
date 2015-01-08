@@ -1,25 +1,25 @@
 <div class="account col-xs-10 col-sm-5 center-block">
   <form class="account-form spacing-bottom3" role="form" action="/signup" method="post">
     <div class="email form-group">
-      <label class="sr-only" for="username">Email</label>
+      <label class="sr-only" for="username">{{t 'label.email'}}</label>
       <input class="input-lg form-control large" id="username" name="email" type="email" placeholder="Email" value="email"/>
     </div>
     <div class="emailconfirm form-group">
-      <label class="sr-only" for="confirmEmail">Confirm Email address</label>
-      <input class="input-lg form-control large" id="confirmEmail" name="confirmEmail" type="email" placeholder="Confirm email" value=""/>
+      <label class="sr-only" for="confirmEmail">{{t 'label.confirm.email'}}</label>
+      <input class="input-lg form-control large" id="confirmEmail" name="confirmEmail" type="email" placeholder="Confirm Email" value=""/>
     </div>
     <div class="password form-group">
-      <label class="sr-only" for="password">Password</label>
+      <label class="sr-only" for="password">{{t 'label.password'}}</label>
       <input class="input-lg form-control large" id="password" name="password" type="password" placeholder="Password" />
     </div>
     <div class="passwordconfirm form-group">
-      <label class="sr-only" for="confirmPassword">Confirm password</label>
-      <input class="input-lg form-control large" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" />
+      <label class="sr-only" for="confirmPassword">{{t 'label.confirm.password'}}</label>
+      <input class="input-lg form-control large" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password" />
     </div>
     <div class="checkbox text-center text-small">
       <label>
         <input type="checkbox" id="tnc" name="tnc" value="agree" />
-        I have read and accept the {{url-prefix-link "bloo.ie/terms" "terms"}}.
+        {{t "signUp.label.terms"}} {{url-prefix-link "bloo.ie/terms" "terms"}}
       </label>
     </div>
     <input type="hidden" name="client_id" value="escaped_query.client_id">
@@ -28,15 +28,15 @@
     <input type="hidden" name="responseType" value="escaped_query.response_type">
     <div class="alertbox form-group"></div>
     {{#if error}}
-    <p id="signuperror">{{error}}</p>
+      <p id="signuperror">{{error}}</p>
     {{/if}}
     <div class="spacing-top3">
       {{!-- <input {{#if app_settings.enable_GA}}onClick="_gaq.push(['_trackEvent', 'Client', 'Signup', 'client.bloo.ie/signup',, false]);"{{/if}} type="submit" value="Sign up" class="btn go" id="requestformbutton"/> --}}
-      <a href="#" class="btn pop blue large block login_button"><span>Sign up</span></a>
+      <a href="#" class="btn pop blue large block login_button"><span>{{t 'button.signUp'}}</span></a>
     </div>
     <input type="hidden" name="referer" value="referer" />
   </form>
   <div class="text-center text-small spacing-top6">
-    <a class="btn hollow" href="#">Sign in</a>
+    <a class="btn hollow" href="#">{{t 'button.signIn'}}</a>
   </div>
 </div>

@@ -3,22 +3,22 @@
     {{#if error}}
     <div class="pad2 text-center">
       <form class="account-form" role="form" action="/user/password" method="post">
-        <h4>Oops! There has been an error!</h4>
+        <h4>{{t 'confirmPassword.error.title'}}!</h4>
         <p>{{message}}</p>
       {{else}}
       {{#unless thanks}}
         <div class="pad2 text-center">
-          <h4>Welcome back!</h4>
-          <p>All we need is your new password to keep everything nice and secure</p>
+          <h4>{{t 'confirmPassword.change.title'}}!</h4>
+          <p>{{t 'confirmPassword.change.message'}}</p>
           <div class="spacing-top2">
             <div class="row">
               <div class="col-xs-6">
-                <label class="sr-only" for="password">Password</label>
-                <input class="input-lg form-control large" id="password" name="password" type="password" placeholder="New Password"/>
+                <label class="sr-only" for="password">{{t 'label.password'}}</label>
+                <input class="form-control" id="password" name="password" type="password" placeholder="New Password"/>
               </div>
               <div class="col-xs-6">
-                <label class="sr-only" for="passwordConfirm">Confirm Password</label>
-                <input class="input-lg form-control large" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="Confirm Password"/>
+                <label class="sr-only" for="passwordConfirm">{{t 'label.confirm.password'}}</label>
+                <input class="form-control" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="Confirm Password"/>
               </div>
             </div>
           </div>
@@ -37,11 +37,11 @@
       </div>
       {{else}}
       <div class="pad2 text-center">
-        <h4>Password updated successfully!</h4>
-        <p>You can now use your new password to login</p>
+        <h4>{{t 'confirmPassword.success.title'}}!</h4>
+        <p>{{t 'confirmPassword.success.message'}}</p>
       </div>
       <div class="frame-footer">
-        <a href="success_login" class="btn pop blue block">Sign in</a>
+        <a href="success_login" class="btn pop blue block">{{t 'button.signIn'}}</a>
       </div>
       {{/unless}}
     {{/if}}

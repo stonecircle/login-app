@@ -2,23 +2,23 @@
   <div class="frame">
     <div class="pad2 text-center">
       {{#if error}}
-        <h4>Fiddlesticks!</h4>
-        <p>An error occured. {{error}}.</p>
-        <p>Need help getting it sorted? <a href="mailto:help@bloo.ie">Let us know</a>.</p>
+        <h4>{{t 'download.error.title'}}!</h4>
+        <p>{{error}}</p>
+        <p>{{t 'download.error.message.one'}}? <a href="mailto:help@bloo.ie">{{t 'download.error.message.two'}}</a>.</p>
       {{else}}
-        <h4>Download {{download.name}}</h4>
-        <p>Thanks! Your account and payment have been verified. Click below to download JomChat and start the installation process.</p>
+        <h4>{{t 'download.success.title'}} {{download.name}}</h4>
+        <p>{{t 'download.success.message.one'}} {{download.name}} {{t 'download.success.message.two'}}.</p>
       {{/if}}
     </div>
     <div class="frame-footer">
       {{#if error}}
-        <a class="btn pop blue block" href="/authorize?client_id={{clientId}}&response_type=code&scope={{scope}}&redirect_uri={{redirectUri}}"><span>Verify account</span></a>
+        <a class="btn pop blue block" href="/authorize?client_id={{clientId}}&response_type=code&scope={{scope}}&redirect_uri={{redirectUri}}"><span>{{t 'button.verify'}}</span></a>
       {{else}}
-        <a class="btn pop blue block" href="download.link"><span>Download</span></a>
+        <a class="btn pop blue block" href="download.link"><span>{{t 'button.download'}}</span></a>
       {{/if}}
     </div>
   </div>
 </div>
 <div class="text-center text-small spacing-top6">
-  <a class="btn hollow" href="#">Sign in</a>
+  <a class="btn hollow" href="#">{{t 'button.signIn'}}</a>
 </div>
