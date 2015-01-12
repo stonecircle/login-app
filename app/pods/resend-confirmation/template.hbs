@@ -1,19 +1,21 @@
+{{show-message error=error message=message}}
 <div class="account col-xs-10 col-sm-5 center-block">
-  <div class="email form-group">
-    <label class="sr-only" for="email">{{t 'label.email'}}</label>
-    <input class="input-lg form-control large" id="email" type="email" name="email" placeholder="Email" />
-    <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
-    <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
-    <input type="hidden" id="scope" name="scope" value="escaped_query.scope">
-  </div>
-  <div class="alertbox form-group"></div>
-  {{#if error}}
-    <p id="autherror">{{error}}</p>
-  {{/if}}
-  <div class="spacing-top2">
-    <a class="btn pop blue block" id="submit_form" href="javascript:void(0);"><span>{{t 'button.request'}}</span></a>
-  </div>
-  <div class="text-center text-small spacing-top6">
+  <form class="spacing-bottom6">
+    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error"}}>
+      <label class="sr-only" for="email">{{t 'label.email'}}</label>
+      <input class="form-control large" type="email" id="email" name="email" placeholder="Email">
+      <span {{bind-attr class=":form-control-feedback errors.email.length:show::hide"}}>
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+    <div>
+      <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
+      <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
+      <input type="hidden" id="scope" name="scope" value="escaped_query.scope">
+    </div>
+    <button class="btn pop blue block" {{action 'resendConfirmation'}}><span>{{t 'button.request'}}</span></button>
+  </form>
+  <div class="text-center">
     <a class="btn hollow" href="#">{{t 'button.signIn'}}</a>
   </div>
 </div>

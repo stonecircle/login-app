@@ -13,6 +13,7 @@ var translations = {
   // Form labels
   label: {
     'email': "Email",
+    'domain': "Domain",
     'password': "Password",
     confirm: {
       'email': "Confirm Email",

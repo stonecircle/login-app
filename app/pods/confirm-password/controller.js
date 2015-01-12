@@ -3,18 +3,18 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin, {
     validations: {
-        email: {
-            'is-email': true
-        },
         password: {
+            presence: true
+        },
+        confirmPassword: {
             presence: true
         }
     },
 
     actions: {
-        signIn: function(){
+        confirmPassword: function(){
             return this.validate().then(function(){
-                this.set('message', 'Success!');
+                this.set('message', 'Confirmation email sent successfully, please check your inbox for more instructions');
                 this.get('content').save().then(function(){
 
                 }.bind(this), function(err){
@@ -23,11 +23,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                     throw err;
                 }.bind(this));
             }.bind(this)).catch(function(err){
-                if(err.email.length){
-                    return this.set('error', 'You must enter a valid email address');
+                if(err.password.length){
+                    return this.set('error', 'There is no account associated with this email');
                 }
-                if (err.password.length){
-                    return this.set('error', 'Your password is incorrect');
+                if(err.confirmPassword.length){
+                    return this.set('error', 'There is no account associated with this email');
                 }
 
             }.bind(this));

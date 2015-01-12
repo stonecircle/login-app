@@ -1,23 +1,29 @@
 {{show-message error=error message=message}}
 <div class="account col-xs-10 col-sm-5 center-block">
   <form class="spacing-bottom6">
-    <div class="form-group">
+    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error"}}>
       <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      <input type="email" {{bind-attr class=":form-control :large errors.email.length:errorClass isSubmitted:submitted"}} name="email" placeholder="Email">
+      <input class="form-control large" type="email" id="email" name="email" placeholder="Email">
+      <span {{bind-attr class=":form-control-feedback errors.email.length:show::hide"}}>
+        <i class="fa fa-times"></i>
+      </span>
     </div>
-    <div class="form-group">
+    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error"}}>
       <label class="sr-only" for="password">{{t 'label.password'}}</label>
-      <input type="password" class="form-control large" name="password" placeholder="Password">
+      <input class="form-control large" type="password" id="password" name="password" placeholder="Password">
+      <span {{bind-attr class=":form-control-feedback errors.password.length:show::hide"}}>
+        <i class="fa fa-times"></i>
+      </span>
     </div>
     <div>
       <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
       <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
       <input type="hidden" id="scope" name="scope" value="escaped_query.scope">
-      <input type="hidden" name="referer" value="referer" />
+      <input type="hidden" name="referer" value="referer">
     </div>
     <div class="text-small text-center">
-      <button class="btn pop blue large block spacing-bottom2" {{action 'submit'}}><span>{{t 'button.signIn'}}</span></button>
-      <a href="/password_reset?client_id=escaped_query.client_id&amp;response_type=code&amp;redirect_uri=escaped_query.redirect_uri&amp;display=escaped_query.display#if escaped_query.state&amp;state=escaped_query.stateif#if escaped_query.scope&amp;scope=escaped_query.scope/if" class="forgot-pw" onclick="switchContainer('forgotPassword')">{{t 'signIn.label.forgot'}}?</a>
+      <button class="btn pop blue large block spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
+      <a href="/password_reset?client_id=escaped_query.client_id&amp;response_type=code&amp;redirect_uri=escaped_query.redirect_uri&amp;display=escaped_query.display#if escaped_query.state&amp;state=escaped_query.stateif#if escaped_query.scope&amp;scope=escaped_query.scope/if">{{t 'signIn.label.forgot'}}?</a>
     </div>
   </form>
   <div class="text-center">

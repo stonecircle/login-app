@@ -1,12 +1,15 @@
-<div class="blooie-notifications">
+<div class="notifications-container">
   {{#if error}}
-    <div class="blooie-notification error pad1 center-block">
-      <div class="icon text-center pull-left">
+    <div class="notification error pad1 center-block">
+      <div class="icon text-center">
         <i class="fa fa-warning"></i>
       </div>
-      <div class="content pull-left">
+      <div class="content text-small">
         {{{error}}}
       </div>
+      <span class="close" {{action ''}}>
+        <i class="fa fa-times-circle"></i>
+      </span>
     </div>
   {{/if}}
 </div>

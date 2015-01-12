@@ -6,13 +6,19 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         email: {
             'is-email': true
         },
+        domain: {
+            'is-url': true
+        },
         password: {
             presence: true
+        },
+        terms: {
+            confirmation: true
         }
     },
 
     actions: {
-        signIn: function(){
+        signUp: function(){
             return this.validate().then(function(){
                 this.set('message', 'Success!');
                 this.get('content').save().then(function(){
@@ -26,8 +32,14 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                 if(err.email.length){
                     return this.set('error', 'You must enter a valid email address');
                 }
+                if (err.domain.length){
+                    return this.set('error', 'You must enter a valid domain');
+                }
                 if (err.password.length){
                     return this.set('error', 'Your password is incorrect');
+                }
+                if (err.terms.length){
+                    return this.set('error', 'You must agree to the Blooie terms');
                 }
 
             }.bind(this));
