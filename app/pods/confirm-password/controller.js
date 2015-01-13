@@ -24,10 +24,16 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                 }.bind(this));
             }.bind(this)).catch(function(err){
                 if(err.password.length){
-                    return this.set('error', 'There is no account associated with this email');
+                    this.notifications.addNotification({
+                        message: 'There is no account associated with this email',
+                        type: 'error'
+                    });
                 }
                 if(err.confirmPassword.length){
-                    return this.set('error', 'There is no account associated with this email');
+                    this.notifications.addNotification({
+                        message: 'There is no account associated with this email',
+                        type: 'error'
+                    });
                 }
 
             }.bind(this));
