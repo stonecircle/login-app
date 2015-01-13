@@ -4,6 +4,8 @@
 <div class="content text-small">
   {{notification.message}}
 </div>
-<span class="close" {{action "removeNotification"}}>
-  <i class="fa fa-times-circle"></i>
-</span>
+{{#unless notification.autoClear}}
+  <span class="close" {{action "removeNotification"}}>
+    <i class="fa fa-times-circle"></i>
+  </span>
+{{/unless}}
