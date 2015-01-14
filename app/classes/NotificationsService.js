@@ -20,11 +20,17 @@ export default Ember.ArrayProxy.extend({
             this.setupAutoClear(notification);
         }
 
+        // If no message is set, throw an error
+        if (!options.message) {
+            throw new Error("No notification message set");
+        }
+
         return notification;
     },
 
     removeNotification: function(notification) {
         notification.set('dismiss', true);
+        // Delay removal from DOM for dismissal animation
         Ember.run.later(this, function() {
             this.removeObject(notification);
         }.bind(this), 500);
