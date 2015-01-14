@@ -7,12 +7,12 @@ export default Ember.ArrayProxy.extend({
 
     addNotification: function(options) {
 
-        var notification = {
+        var notification = Ember.Object.create({
             message: options.message,
             type: options.type || 'info', // info, success, warning, error
             autoClear: options.autoClear,
             clearDuration: options.clearDuration || this.get('defaultClearDuration')
-        };
+        });
 
         this.pushObject(notification);
 
@@ -24,14 +24,16 @@ export default Ember.ArrayProxy.extend({
     },
 
     removeNotification: function(notification) {
-        this.removeObject(notification);
+        notification.set('dismiss', true);
+        Ember.run.later(this, function() {
+            this.removeObject(notification);
+        }.bind(this), 500);
     },
 
     setupAutoClear: function(notification) {
         Ember.run.later(this, function() {
             // Hasn't been closed manually
             if (this.indexOf(notification) >= 0) {
-                this.set('dismiss', true);
                 this.removeNotification(notification);
             }
         }.bind(this), notification.clearDuration);
