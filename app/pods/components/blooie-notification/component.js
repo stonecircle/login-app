@@ -11,6 +11,7 @@ export default Ember.Component.extend({
             case "success":
                 return 'fa-check';
             case "warning":
+                return 'fa-warning';
             case "error":
                 return 'fa-warning';
         }
