@@ -12,31 +12,22 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         resetPassword: function(){
             return this.validate()
             .then(function(){
-                Ember.$.post('localauth.bloo.ie/sign_up', {
-                    email: this.get('email'),
-                    password: this.get('password'),
-                    tnc: true
+                Ember.$.post('localauth.bloo.ie/reset_password', {
                 }, function(err, data){
                     if(err){
-                        this.set('error', 'Signup failed, please try again');
+                        this.notifications.addNotification({
+                            message: 'There is no account associated with this email',
+                            type: 'error'
+                        });
                         return;
                     }
 
                     this.set('message', 'Reset email sent successfully, please check your inbox for more instructions');
-
                 }.bind(this));
-                //this.set('message', 'Reset email sent successfully, please check your inbox for more instructions');
-                // this.get('content').save().then(function(){
-
-                // }.bind(this), function(err){
-                //     this.set('error', err.message);
-
-                //     throw err;
-                // }.bind(this));
             }.bind(this)).catch(function(err){
                 if(err.email.length){
                     this.notifications.addNotification({
-                        message: 'There is no account associated with this email',
+                        message: 'You must enter a valid email address',
                         type: 'error'
                     });
                 }
