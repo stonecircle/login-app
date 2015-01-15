@@ -16,15 +16,24 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
 
     actions: {
         signUp: function(){
-            return this.validate().then(function(){
+            return this.validate()
+            .then(function(){
                 Ember.$.post('localauth.bloo.ie/sign_up', {
                     email: this.get('email'),
                     password: this.get('password'),
                     tnc: true
                 }, function(err, data){
                     if(err){
-                        this.set('error', 'Signup failed, please try again');
+                        this.notifications.addNotification({
+                            message: 'Signup failed, please try again',
+                            type: 'error'
+                        });
                     }
+
+                    this.notifications.addNotification({
+                        message: 'Signup failed, please try again',
+                        type: 'success'
+                    });
                 }.bind(this));
             }.bind(this)).catch(function(err){
                 if(err.email.length){
