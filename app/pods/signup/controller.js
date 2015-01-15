@@ -28,6 +28,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                             message: 'Signup failed, please try again',
                             type: 'error'
                         });
+
+                        return;
                     }
 
                     this.notifications.addNotification({
