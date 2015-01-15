@@ -6,7 +6,7 @@ module.exports = function(environment) {
     podModulePrefix: 'oauthloginapp/pods',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     urlPrefix: 'local',
     EmberENV: {
       FEATURES: {
