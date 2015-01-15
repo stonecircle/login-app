@@ -6,9 +6,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         email: {
             'is-email': true
         },
-        domain: {
-            'is-url': true
-        },
         password: {
             presence: true
         },
@@ -20,24 +17,19 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
     actions: {
         signUp: function(){
             return this.validate().then(function(){
-                this.set('message', 'Success!');
-                this.get('content').save().then(function(){
-
-                }.bind(this), function(err){
-                    this.set('error', err.message);
-
-                    throw err;
+                Ember.$.post('localauth.bloo.ie/sign_up', {
+                    email: this.get('email'),
+                    password: this.get('password'),
+                    tnc: true
+                }, function(err, data){
+                    if(err){
+                        this.set('error', 'Signup failed, please try again');
+                    }
                 }.bind(this));
             }.bind(this)).catch(function(err){
                 if(err.email.length){
                     this.notifications.addNotification({
                         message: 'You must enter a valid email address',
-                        type: 'error'
-                    });
-                }
-                if (err.domain.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid domain',
                         type: 'error'
                     });
                 }
