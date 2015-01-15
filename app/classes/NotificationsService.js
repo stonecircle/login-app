@@ -7,6 +7,11 @@ export default Ember.ArrayProxy.extend({
 
     addNotification: function(options) {
 
+        // If no message is set, throw an error
+        if (!options.message) {
+            throw new Error("No notification message set");
+        }
+
         var notification = Ember.Object.create({
             message: options.message,
             type: options.type || 'info', // info, success, warning, error
@@ -18,11 +23,6 @@ export default Ember.ArrayProxy.extend({
 
         if (notification.autoClear) {
             this.setupAutoClear(notification);
-        }
-
-        // If no message is set, throw an error
-        if (!options.message) {
-            throw new Error("No notification message set");
         }
 
         return notification;
