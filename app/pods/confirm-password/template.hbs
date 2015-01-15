@@ -15,7 +15,7 @@
               <div class="col-xs-6">
                 <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error"}}>
                   <label class="sr-only" for="password">{{t 'label.password'}}</label>
-                  <input class="form-control" type="password" id="password" name="password" placeholder="New Password">
+                  {{input class="form-control" type="password" id="password" name="password" value="password" placeholder="New Password"}}
                   <span {{bind-attr class=":form-control-feedback errors.password.length:show::hide"}}>
                     <i class="fa fa-times"></i>
                   </span>
@@ -24,7 +24,7 @@
               <div class="col-xs-6">
                 <div {{bind-attr class=":form-group :has-feedback errors.confirmPassword.length:has-error"}}>
                   <label class="sr-only" for="confirmPassword">{{t 'label.confirm.password'}}</label>
-                  <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password">
+                  {{input class="form-control" type="password" id="confirmPassword" name="confirmPassword" value="confirmPassword" placeholder="Confirm Password"}}
                   <span {{bind-attr class=":form-control-feedback errors.confirmPassword.length:show::hide"}}>
                     <i class="fa fa-times"></i>
                   </span>
@@ -51,7 +51,7 @@
         <p>{{t 'confirmPassword.success.message'}}</p>
       </div>
       <div class="frame-footer">
-        <a class="btn pop blue block" href="#">{{t 'button.signIn'}}</a>
+        {{#link-to 'signin' class="btn hollow"}}{{t 'button.signIn'}}{{/link-to}}
       </div>
       {{/unless}}
     {{/if}}

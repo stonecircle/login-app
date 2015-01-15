@@ -34,6 +34,6 @@
     "ember-validations": "^2.0.0-alpha.1",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "uiframework": "git+ssh://git@github.com:Blooie/uiframework.git#4.1"
+    "uiframework": "git+ssh://git@github.com:Blooie/uiframework.git#4.1.1"
   }
 }

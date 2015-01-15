@@ -1,9 +1,8 @@
-{{show-message error=error message=message}}
 <div class="account col-xs-10 col-sm-5 center-block">
   <form class="spacing-bottom6">
     <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error"}}>
       <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      <input class="form-control large" type="email" id="email" name="email" placeholder="Email">
+      {{input class="form-control large" type="email" id="email" name="email" value="email" placeholder="Email"}}
       <span {{bind-attr class=":form-control-feedback errors.email.length:show::hide"}}>
         <i class="fa fa-times"></i>
       </span>
@@ -16,7 +15,7 @@
     <button class="btn pop blue block" {{action 'resendConfirmation'}}><span>{{t 'button.request'}}</span></button>
   </form>
   <div class="text-center">
-    <a class="btn hollow" href="#">{{t 'button.signIn'}}</a>
+    {{#link-to 'signin' class="btn hollow"}}{{t 'button.signIn'}}{{/link-to}}
   </div>
 </div>
 
