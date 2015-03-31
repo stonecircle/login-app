@@ -37,30 +37,3 @@
     })();
   </script>
 {{/if}}
-<script>
-  $(function() {
-    Placeholders.init();
-    if(!window.addEventListener && document.documentMode && document.documentMode == 7) {
-      $('input[type=password]').each(function() {
-        var self = this;
-        var placeholder = $(this).attr("placeholder") ? $(this).attr("placeholder") : "";
-
-        var fakepass = $('<input type="text" name="fake_pass" id="fake_pass" value="' + placeholder + '"/>');
-        fakepass.insertAfter($(this));
-        $(this).hide();
-        fakepass.focus(function() {
-          $(this).hide(); //  hide the fake password input text
-          $(self).show().focus();
-        });
-
-        // // On blur of the real pass
-        $(this).blur(function() {
-          if($(self).val() == "") { // if the value is empty,
-            $(self).hide(); // hide the real password field
-            fakepass.show(); // show the fake password
-          }
-        });
-      });
-    }
-  });
-</script>
