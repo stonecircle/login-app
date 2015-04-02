@@ -14,27 +14,45 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
     actions: {
         signIn: function(){
             return this.validate().then(function(){
-                this.set('message', 'Success!');
-                this.get('content').save().then(function(){
+                return Ember.$.post('/api/login', {
+                        email: this.get('email'),
+                        password: this.get('password')
+                    });
+            }.bind(this))
+            .then(function(){
+                //success
+                location.reload();
+            })
+            .catch(function(err){
+                var self = this;
+                var keys = Ember.keys(err);
+                var erroredYet = false;
 
-                }.bind(this), function(err){
-                    this.set('error', err.message);
+                if(this.get('isInvalid')){
+                    // For each validation error
+                    keys.forEach(function(key){
+                        if(!erroredYet && err.get(key + '.length')) {
+                            err.get(key).forEach(function(errorMessage) {
 
-                    throw err;
-                }.bind(this));
-            }.bind(this)).catch(function(err){
-                if(err.email.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid email address',
+                                console.log("face");
+                                erroredYet = true;
+
+                                self.notifications.addNotification({
+                                    message:  errorMessage,
+                                    type: 'error'
+                                });
+                            });
+                        }
+                    });
+                } else {
+                    console.log(err);
+                    self.notifications.addNotification({
+                        message:  "Error signing in: " + (err.message || err.responseText),
                         type: 'error'
                     });
                 }
-                if (err.password.length){
-                    this.notifications.addNotification({
-                        message: 'Your password is incorrect',
-                        type: 'error'
-                    });
-                }
+
+                return;
 
             }.bind(this));
         }
