@@ -2,6 +2,7 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin, {
+    needs: ['application'],
     validations: {
         email: {
             'is-email': true
@@ -31,7 +32,9 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         email: this.get('email'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
-                        terms: this.get('terms')
+                        terms: this.get('terms'),
+                        redirect_uri: this.get('controllers.application.redirect_uri'),
+                        client_id: this.get('controllers.application.client_id')
                     });
 
             }.bind(this))
