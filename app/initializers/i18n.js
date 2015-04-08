@@ -54,6 +54,10 @@ var translations = {
     'title': "Your account is now enabled!",
     'message': "You can now sign in with the e-mail and password you used when registering"
   },
+  accountDisabled: {
+    'title': "Your account has not been activated",
+    'message': "To activate your account please click the link in the email you received after sign up."
+  },
   // Confirm password page
   confirmPassword: {
     error: {
