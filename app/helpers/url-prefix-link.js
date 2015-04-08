@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import config from 'oauthloginapp/config/environment';
+import config from 'authmaker-login-app/config/environment';
 
 export function urlPrefixLink(input, value) {
   var prefix = config.urlPrefix ? config.urlPrefix + '.' : '';

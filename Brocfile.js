@@ -25,9 +25,4 @@ var app = new EmberApp({
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import({
-  development: 'bower_components/ember-i18n/lib/i18n.js',
-  production: 'bower_components/ember-i18n/lib/i18n.js',
-});
-
 module.exports = app.toTree();

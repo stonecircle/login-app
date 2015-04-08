@@ -3,15 +3,16 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin, {
     validations: {
-        email: {
-            'is-email': true
+        password: {
+            presence: true,
+            confirmation: true
         }
     },
 
     actions: {
-        resetPassword: function(){
+        confirmPassword: function(){
             return this.validate().then(function(){
-                this.set('message', 'Reset email sent successfully, please check your inbox for more instructions');
+                this.set('message', 'Confirmation email sent successfully, please check your inbox for more instructions');
                 this.get('content').save().then(function(){
 
                 }.bind(this), function(err){
@@ -20,7 +21,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                     throw err;
                 }.bind(this));
             }.bind(this)).catch(function(err){
-                if(err.email.length){
+                if(err.password.length){
+                    this.notifications.addNotification({
+                        message: 'There is no account associated with this email',
+                        type: 'error'
+                    });
+                }
+                if(err.confirmPassword.length){
                     this.notifications.addNotification({
                         message: 'There is no account associated with this email',
                         type: 'error'

@@ -1,28 +1,22 @@
 <div class="account col-xs-10 col-sm-5 center-block">
   <form class="spacing-bottom6">
-    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error"}}>
+    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error:has-success email.length::empty"}}>
       <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      {{input class="form-control large" type="email" id="email" name="email" value="email" placeholder="Email"}}
-      <span {{bind-attr class=":form-control-feedback errors.email.length:show::hide"}}>
-        <i class="fa fa-times"></i>
+      {{input class="form-control large" type="email" id="email" name="email" value=email placeholder="Email"}}
+      <span {{bind-attr class=":form-control-feedback email.length::hide"}}>
+        <i {{bind-attr class=":fa errors.email.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error"}}>
+    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error:has-success password.length::empty"}}>
       <label class="sr-only" for="password">{{t 'label.password'}}</label>
-      {{input class="form-control large" type="password" id="password" name="password" value="password" placeholder="Password"}}
-      <span {{bind-attr class=":form-control-feedback errors.password.length:show::hide"}}>
-        <i class="fa fa-times"></i>
+      {{input class="form-control large" type="password" id="password" name="password" value=password placeholder="Password"}}
+      <span {{bind-attr class=":form-control-feedback password.length::hide"}}>
+        <i {{bind-attr class=":fa errors.password.length:fa-close:fa-check"}}></i>
       </span>
-    </div>
-    <div>
-      <input type="hidden" id="client_id" name="client_id" value="escaped_query.client_id">
-      <input type="hidden" id="redirect_uri" name="redirect_uri" value="escaped_query.redirect_uri">
-      <input type="hidden" id="scope" name="scope" value="escaped_query.scope">
-      <input type="hidden" name="referer" value="referer">
     </div>
     <div class="text-small text-center">
       <button class="btn pop blue large block spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
-      <a href="/password_reset?client_id=escaped_query.client_id&amp;response_type=code&amp;redirect_uri=escaped_query.redirect_uri&amp;display=escaped_query.display#if escaped_query.state&amp;state=escaped_query.stateif#if escaped_query.scope&amp;scope=escaped_query.scope/if">{{t 'signIn.label.forgot'}}?</a>
+      
     </div>
   </form>
   <div class="text-center">

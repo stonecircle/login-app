@@ -1,32 +1,34 @@
 <div class="account col-xs-10 col-sm-5 center-block">
   <form class="spacing-bottom6">
-    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error::has-success"}}>
+    <div {{bind-attr class=":form-group :has-feedback errors.email.length:has-error:has-success email.length::empty"}}>
       <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      {{input class="form-control large" type="email" id="email" name="email" value="email" placeholder="Email"}}
-      <span {{bind-attr class=":form-control-feedback errors.email.length:show::hide"}}>
-        <i {{bind-attr class=":fa errors.email.length:fa-close::fa-check"}}></i>
+      {{input class="form-control large" type="email" id="email" name="email" value=email placeholder="Email"}}
+      <span {{bind-attr class=":form-control-feedback email.length::hide"}}>
+        <i {{bind-attr class=":fa errors.email.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div {{bind-attr class=":form-group :has-feedback errors.domain.length:has-error::has-success"}}>
-      <label class="sr-only" for="domain">{{t 'label.domain'}}</label>
-      {{input class="form-control large" type="url" id="domain" name="domain" value="domain" placeholder="Domain"}}
-      <span {{bind-attr class=":form-control-feedback errors.domain.length:show::hide"}}>
-        <i {{bind-attr class=":fa errors.domain.length:fa-close::fa-check"}}></i>
+    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error:has-success password.length::empty"}}>
+      <label class="sr-only" for="password">{{t 'label.password'}}</label>
+      {{input class="form-control large" type="password" id="password" name="password" value=password placeholder="Password"}}
+      <span {{bind-attr class=":form-control-feedback password.length::hide"}}>
+        <i {{bind-attr class=":fa errors.password.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error::has-success"}}>
-      <label class="sr-only" for="password">{{t 'label.domain'}}</label>
-      {{input class="form-control large" type="password" id="password" name="password" value="password" placeholder="Password"}}
-      <span {{bind-attr class=":form-control-feedback errors.password.length:show::hide"}}>
-        <i {{bind-attr class=":fa errors.password.length:fa-close::fa-check"}}></i>
+    <div {{bind-attr class=":form-group :has-feedback errors.passwordConfirmation.length:has-error:has-success passwordConfirmation.length::empty"}}>
+      <label class="sr-only" for="password">{{t 'label.passwordConfirm'}}</label>
+      {{input class="form-control large" type="password" id="passwordConfirm" name="passwordConfirm" value=passwordConfirmation placeholder="Confirm Password"}}
+      <span {{bind-attr class=":form-control-feedback passwordConfirmation.length::hide"}}>
+        <i {{bind-attr class=":fa errors.passwordConfirmation.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div class="checkbox text-center text-small">
-      <label>
-        {{input type="checkbox" id="terms" name="terms"}}
-        {{t "signUp.label.terms"}} {{url-prefix-link "bloo.ie/terms" "terms"}}
-      </label>
-    </div>
+    {{#if termsLink}}
+      <div class="checkbox text-center text-small">
+        <label>
+          {{input type="checkbox" id="terms" name="terms" checked=terms}}
+          {{t "signUp.label.terms"}} <li><a {{bindAttr href=termsLink }}>terms</a></li>
+        </label>
+      </div>
+    {{/if}}
     <div>
       <input type="hidden" name="client_id" value="escaped_query.client_id">
       <input type="hidden" name="redirect_uri" value="escaped_query.redirect_uri">

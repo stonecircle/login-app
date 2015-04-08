@@ -1,0 +1,7 @@
+<div class="account col-xs-10 col-sm-5 center-block">
+  <form class="spacing-bottom6">
+    {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name="password" id="password" type='password'}}
+    {{validated-input labelKey='label.confirm.password' value=passwordConfirmation hasError=errors.passwordConfirmation.length placeholder='Password Confirmation' name="passwordConfirmation" id="passwordConfirmation" type='password'}}
+    <button class="btn pop blue block" {{action 'resetPassword'}}><span>{{t 'button.reset'}}</span></button>
+  </form>
+</div>

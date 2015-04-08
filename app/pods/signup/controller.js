@@ -6,29 +6,74 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         email: {
             'is-email': true
         },
-        domain: {
-            'is-url': true
-        },
         password: {
-            presence: true
+            confirmation: true,
+            // length: {
+            //     minimum: 8
+            // }
         },
         terms: {
-            confirmation: true
+            acceptance: {
+                'if' : function(object){
+                    if(object.get('termsLink')){
+                        return true;
+                    }
+                }
+            }
         }
     },
 
     actions: {
         signUp: function(){
             return this.validate().then(function(){
-                this.set('message', 'Success!');
-                this.get('content').save().then(function(){
 
-                }.bind(this), function(err){
-                    this.set('error', err.message);
+                return Ember.$.post('/api/signup', {
+                        email: this.get('email'),
+                        password: this.get('password'),
+                        passwordConfirmation: this.get('passwordConfirmation'),
+                        terms: this.get('terms')
+                    });
 
-                    throw err;
-                }.bind(this));
-            }.bind(this)).catch(function(err){
+            }.bind(this))
+            .then(() => {
+                this.notifications.addNotification({
+                    message:  "Success!",
+                    type: 'info'
+                });
+
+                //success
+                location.reload();
+            })
+            .catch(function(err){
+
+                var self = this;
+                var keys = Ember.keys(err);
+                var erroredYet = false;
+
+                if(this.get('isInvalid')){
+                    // For each validation error
+                    keys.forEach(function(key){
+                        if(!erroredYet && err.get(key + '.length')) {
+                            err.get(key).forEach(function(errorMessage) {
+
+                                erroredYet = true;
+
+                                self.notifications.addNotification({
+                                    message:  errorMessage,
+                                    type: 'error'
+                                });
+                            });
+                        }
+                    });
+                } else {
+                    self.notifications.addNotification({
+                        message:  "Error signing up: " + (err.message || err.responseText),
+                        type: 'error'
+                    });
+                }
+
+                return;
+
                 if(err.email.length){
                     this.notifications.addNotification({
                         message: 'You must enter a valid email address',

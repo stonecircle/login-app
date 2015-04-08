@@ -3,7 +3,7 @@ import Base from 'ember-validations/validators/base';
 export default Base.extend({
     call: function() {
         // http://www.regxlib.com/REDetails.aspx?regexp_id=26
-        var regex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        var regex = /^([\+\w-]+(?:\.[\+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
         if (!regex.test(this.model.get(this.property))) {
             this.errors.pushObject("is not a valid email");

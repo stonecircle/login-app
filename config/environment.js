@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'oauthloginapp',
-    podModulePrefix: 'oauthloginapp/pods',
+    modulePrefix: 'authmaker-login-app',
+    podModulePrefix: 'authmaker-login-app/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -18,6 +18,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'style-src': "'self' 'unsafe-inline'",
+      'img-src': "'self' data:"
     }
   };
 

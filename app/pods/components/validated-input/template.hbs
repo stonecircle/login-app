@@ -1,0 +1,7 @@
+<div {{bind-attr class=":form-group :has-feedback hasError:has-error value.length::empty"}}>
+  <label class="sr-only" for="email">{{t labelKey}}</label>
+  {{input class="form-control large" type=type name=name value=value placeholder=placeholder}}
+  <span {{bind-attr class=":form-control-feedback value.length::hide"}}>
+    <i {{bind-attr class=":fa hasError:fa-close:fa-check"}}></i>
+  </span>
+</div>

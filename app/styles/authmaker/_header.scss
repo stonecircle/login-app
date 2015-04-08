@@ -1,0 +1,14 @@
+//
+// Base OAuth header
+// --------------------------------------------------
+
+
+.auth-header {
+  h1 a {
+    @include size(10rem,3rem);
+    background: url("/logo.svg") no-repeat;
+    background-size: contain;
+    display: block;
+    margin: 0 auto;
+  }
+}

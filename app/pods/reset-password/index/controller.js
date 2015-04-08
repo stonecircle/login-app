@@ -2,41 +2,42 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin, {
+    needs: ['application'],
+
     validations: {
         email: {
             'is-email': true
-        },
-        password: {
-            presence: true
         }
     },
 
     actions: {
-        signIn: function(){
-            return this.validate().then(function(){
-                return Ember.$.post('/api/login', {
+        resetPassword: function(){
+            return this.validate()
+            .then(() => {
+                return Ember.$.post('/api/reset_password', {
                         email: this.get('email'),
-                        password: this.get('password')
+                        redirect_uri: this.get('controllers.application.redirect_uri'),
+                        client_id: this.get('controllers.application.client_id')
                     });
-            }.bind(this))
-            .then(function(){
-                //success
-                location.reload();
             })
-            .catch(function(err){
-                var self = this;
+            .then(() => {
+                this.notifications.addNotification({
+                    message:  'Reset email sent successfully, please check your inbox for more instructions',
+                    type: 'info'
+                });
+            }).catch((err) => {
                 var keys = Ember.keys(err);
                 var erroredYet = false;
 
                 if(this.get('isInvalid')){
                     // For each validation error
-                    keys.forEach(function(key){
+                    keys.forEach((key) => {
                         if(!erroredYet && err.get(key + '.length')) {
-                            err.get(key).forEach(function(errorMessage) {
+                            err.get(key).forEach((errorMessage) => {
 
                                 erroredYet = true;
 
-                                self.notifications.addNotification({
+                                this.notifications.addNotification({
                                     message:  errorMessage,
                                     type: 'error'
                                 });
@@ -45,13 +46,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                     });
                 } else {
 
-                    self.notifications.addNotification({
+                    this.notifications.addNotification({
                         message:  "Error signing in: " + (err.message || err.responseText),
                         type: 'error'
                     });
                 }
 
-            }.bind(this));
+            });
         }
     }
 });

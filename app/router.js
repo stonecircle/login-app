@@ -7,10 +7,13 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('signin');
+  this.route('authorize');
   this.route('signup');
   this.route('download');
   this.route('resend-confirmation');
-  this.route('reset-password');
+  this.resource('reset-password', function(){
+      this.route('confirm');
+  });
   this.route('confirm-password');
   this.route('account-enabled');
 });
