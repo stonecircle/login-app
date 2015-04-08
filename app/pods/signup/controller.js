@@ -75,33 +75,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                     });
                 }
 
-                return;
-
-                if(err.email.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid email address',
-                        type: 'error'
-                    });
-                }
-                if (err.domain.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid domain',
-                        type: 'error'
-                    });
-                }
-                if (err.password.length){
-                    this.notifications.addNotification({
-                        message: 'Your password is invalid',
-                        type: 'error'
-                    });
-                }
-                if (err.terms.length){
-                    this.notifications.addNotification({
-                        message: 'You must agree to the Blooie terms',
-                        type: 'error'
-                    });
-                }
-
             }.bind(this));
         }
     }
