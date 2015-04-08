@@ -1,0 +1,13 @@
+//
+// Base OAuth footer
+// --------------------------------------------------
+
+
+.auth-footer a {
+  color: $neutral-dark;
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-blue;
+  }
+}

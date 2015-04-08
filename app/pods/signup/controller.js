@@ -13,7 +13,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
             // }
         },
         terms: {
-            acceptance: true
+            acceptance: {
+                'if' : function(object){
+                    if(object.get('termsLink')){
+                        return true;
+                    }
+                }
+            }
         }
     },
 
@@ -29,11 +35,14 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                     });
 
             }.bind(this))
-            .then(function(){
+            .then(() => {
                 this.notifications.addNotification({
                     message:  "Success!",
                     type: 'info'
                 });
+
+                //success
+                location.reload();
             })
             .catch(function(err){
 
@@ -47,7 +56,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         if(!erroredYet && err.get(key + '.length')) {
                             err.get(key).forEach(function(errorMessage) {
 
-                                console.log("face");
                                 erroredYet = true;
 
                                 self.notifications.addNotification({
@@ -58,7 +66,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         }
                     });
                 } else {
-                    console.log(err);
                     self.notifications.addNotification({
                         message:  "Error signing up: " + (err.message || err.responseText),
                         type: 'error'

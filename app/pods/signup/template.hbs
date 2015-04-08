@@ -21,12 +21,14 @@
         <i {{bind-attr class=":fa errors.passwordConfirmation.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div class="checkbox text-center text-small">
-      <label>
-        {{input type="checkbox" id="terms" name="terms" checked=terms}}
-        {{t "signUp.label.terms"}} {{url-prefix-link "bloo.ie/terms" "terms"}}
-      </label>
-    </div>
+    {{#if termsLink}}
+      <div class="checkbox text-center text-small">
+        <label>
+          {{input type="checkbox" id="terms" name="terms" checked=terms}}
+          {{t "signUp.label.terms"}} <li><a {{bindAttr href=termsLink }}>terms</a></li>
+        </label>
+      </div>
+    {{/if}}
     <div>
       <input type="hidden" name="client_id" value="escaped_query.client_id">
       <input type="hidden" name="redirect_uri" value="escaped_query.redirect_uri">

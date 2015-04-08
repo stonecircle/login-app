@@ -23,7 +23,7 @@ var translations = {
   // Sign in page
   signIn: {
     label: {
-      'forgot': "Forgot your password"
+      'forgot': "Forgot your password?"
     }
   },
   // Sign up page

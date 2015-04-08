@@ -1,39 +1,27 @@
 <div class="notifications-container">
-  {{blooie-notifications}}
+    {{#each notification in notifications}}
+        {{notification-message notification=notification}}
+    {{/each}}
 </div>
 <div class="container">
   <div class="main spacing-bottom4">
     <header class="auth-header text-center pad-y4">
       <h1 class="spacing0">
-        <a class="text-hide" href="#">Blooie</a>
+        <a class="text-hide">Authmaker</a>
       </h1>
     </header>
     {{{outlet}}}
   </div>
   <footer class="auth-footer text-center text-small">
     <ul class="list-inline">
-      <li>&copy; Blooie, 2015</li>
-      <li>{{url-prefix-link "bloo.ie/privacy" "Privacy"}}</li>
-      <li>{{url-prefix-link "bloo.ie/terms" "Terms"}}</li>
+      {{#if privacyLink}}
+        <li><a {{bindAttr href=privacyLink }}>Terms</a></li>
+      {{/if}}
+
+      {{#if termsLink}}
+        <li><a {{bindAttr href=termsLink }}>Terms</a></li>
+      {{/if}}
     </ul>
+    <a href="http://authmaker.com">Simple authentication powered by AuthMaker</a>
   </footer>
 </div>
-
-
-{{#if app_settings.enable_GA}}
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-25832783-1']);
-    _gaq.push(['_setDomainName', 'bloo.ie']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script');
-      ga.type = 'text/javascript';
-      ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-{{/if}}
