@@ -8,10 +8,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
             'is-email': true
         },
         password: {
-            confirmation: true,
-            // length: {
-            //     minimum: 8
-            // }
+            confirmation: true
         },
         terms: {
             acceptance: {
