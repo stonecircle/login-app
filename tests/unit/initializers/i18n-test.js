@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'oauthloginapp/initializers/i18n';
+import { initialize } from 'authmaker-login-app/initializers/i18n';
 
 var container, application;
 
@@ -20,4 +20,3 @@ test('it works', function() {
   // you would normally confirm the results of the initializer here
   ok(true);
 });
-

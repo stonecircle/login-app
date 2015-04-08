@@ -1,6 +1,6 @@
 import {
   urlPrefixLink
-} from 'oauthloginapp/helpers/url-prefix-link';
+} from 'authmaker-login-app/helpers/url-prefix-link';
 
 module('UrlPrefixLinkHelper');
 

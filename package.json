@@ -1,8 +1,7 @@
 {
-  "name": "oauthloginapp",
-  "version": "0.0.0",
-  "description": "Login app for OAuth Server",
-  "private": true,
+  "name": "authmaker-login-app",
+  "version": "1.0.0",
+  "description": "Login app for AuthMaker",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,7 +9,8 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember test"
+    "test": "ember test",
+    "prepublish": "npm run build -- --environment=production"
   },
   "repository": "",
   "engines": {

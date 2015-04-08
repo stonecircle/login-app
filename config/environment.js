@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'oauthloginapp',
-    podModulePrefix: 'oauthloginapp/pods',
+    modulePrefix: 'authmaker-login-app',
+    podModulePrefix: 'authmaker-login-app/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
