@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('signin');
+  this.route('admin');
   this.route('authorize');
   this.route('signup');
   this.route('download');
