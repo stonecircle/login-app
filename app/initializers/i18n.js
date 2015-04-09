@@ -54,9 +54,13 @@ var translations = {
     'title': "Your account is now enabled!",
     'message': "You can now sign in with the e-mail and password you used when registering"
   },
+  // Account disabled page
   accountDisabled: {
     'title': "Your account has not been activated",
-    'message': "To activate your account please click the link in the email you received after sign up."
+    'message': {
+        'one': "To activate your account please click the link in the email you received after sign up.",
+        'two': "If you have not yet received your confirmation mail please sit tight, it can take some time."
+    }
   },
   // Confirm password page
   confirmPassword: {
