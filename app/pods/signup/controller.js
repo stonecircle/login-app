@@ -8,7 +8,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
             'is-email': true
         },
         password: {
-            confirmation: true
+            confirmation: true,
+            presence: true
         },
         terms: {
             acceptance: {
@@ -23,6 +24,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
 
     actions: {
         signUp: function(){
+            this.notifications.set('content', Ember.A());
             return this.validate().then(function(){
 
                 return Ember.$.post('/api/signup', {

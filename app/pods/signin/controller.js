@@ -13,6 +13,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
 
     actions: {
         signIn: function(){
+            this.notifications.set('content', Ember.A());
             return this.validate().then(function(){
                 return Ember.$.post('/api/login', {
                         email: this.get('email'),
