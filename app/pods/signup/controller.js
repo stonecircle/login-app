@@ -2,15 +2,13 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin, {
+    needs: ['application'],
     validations: {
         email: {
             'is-email': true
         },
         password: {
-            confirmation: true,
-            // length: {
-            //     minimum: 8
-            // }
+            confirmation: true
         },
         terms: {
             acceptance: {
@@ -31,7 +29,9 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         email: this.get('email'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
-                        terms: this.get('terms')
+                        terms: this.get('terms'),
+                        redirect_uri: this.get('controllers.application.redirect_uri'),
+                        client_id: this.get('controllers.application.client_id')
                     });
 
             }.bind(this))
@@ -68,33 +68,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                 } else {
                     self.notifications.addNotification({
                         message:  "Error signing up: " + (err.message || err.responseText),
-                        type: 'error'
-                    });
-                }
-
-                return;
-
-                if(err.email.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid email address',
-                        type: 'error'
-                    });
-                }
-                if (err.domain.length){
-                    this.notifications.addNotification({
-                        message: 'You must enter a valid domain',
-                        type: 'error'
-                    });
-                }
-                if (err.password.length){
-                    this.notifications.addNotification({
-                        message: 'Your password is invalid',
-                        type: 'error'
-                    });
-                }
-                if (err.terms.length){
-                    this.notifications.addNotification({
-                        message: 'You must agree to the Blooie terms',
                         type: 'error'
                     });
                 }
