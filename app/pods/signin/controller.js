@@ -38,7 +38,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                                 erroredYet = true;
 
                                 self.notifications.addNotification({
-                                    message:  errorMessage,
+                                    message: errorMessage,
                                     type: 'error'
                                 });
                             });
