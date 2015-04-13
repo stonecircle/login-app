@@ -2,7 +2,6 @@
   "name": "authmaker-login-app",
   "version": "1.2.0",
   "description": "Login app for AuthMaker",
-  "private": true,
   "directories": {
     "doc": "doc",
     "test": "tests"
