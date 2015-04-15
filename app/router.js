@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('confirm-password');
   this.route('account-enabled');
   this.route('account-disabled');
+  this.route('server-error');
 });
 
 export default Router;
