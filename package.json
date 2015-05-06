@@ -1,6 +1,6 @@
 {
   "name": "authmaker-login-app",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Login app for AuthMaker",
   "directories": {
     "doc": "doc",
