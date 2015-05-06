@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('signin');
-  this.route('admin');
+
   this.route('authorize');
   this.route('signup');
   this.route('download');
@@ -19,6 +19,8 @@ Router.map(function() {
   this.route('account-enabled');
   this.route('account-disabled');
   this.route('server-error');
+
+  this.route('admin', { path: '/*path' });
 });
 
 export default Router;
