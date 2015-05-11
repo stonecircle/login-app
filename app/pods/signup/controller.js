@@ -13,8 +13,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         },
         terms: {
             acceptance: {
-                'if' : function(object){
-                    if(object.get('termsLink')){
+                'if': function(object) {
+                    if (object.get('termsLink')) {
                         return true;
                     }
                 }
@@ -23,11 +23,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
     },
 
     actions: {
-        signUp: function(){
+        signUp() {
             this.notifications.set('content', Ember.A());
-            return this.validate().then(function(){
+            return this.validate().then(() => {
 
-                return Ember.$.post('/api/signup', {
+                    return Ember.$.post('/api/signup', {
                         email: this.get('email'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
@@ -36,45 +36,43 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         client_id: this.get('controllers.application.client_id')
                     });
 
-            }.bind(this))
-            .then(() => {
-                this.notifications.addNotification({
-                    message:  "Success!",
-                    type: 'info'
-                });
+                })
+                .then(() => {
+                    this.notifications.addNotification({
+                        message: "Success!",
+                        type: 'info'
+                    });
 
-                //success
-                location.reload();
-            })
-            .catch(function(err){
+                    //success
+                    location.reload();
+                })
+                .catch((err) => {
+                    var keys = Ember.keys(err);
+                    var erroredYet = false;
 
-                var self = this;
-                var keys = Ember.keys(err);
-                var erroredYet = false;
+                    if (this.get('isInvalid')) {
+                        // For each validation error
+                        keys.forEach((key) => {
+                            if (!erroredYet && err.get(key + '.length')) {
+                                err.get(key).forEach(function(errorMessage) {
 
-                if(this.get('isInvalid')){
-                    // For each validation error
-                    keys.forEach(function(key){
-                        if(!erroredYet && err.get(key + '.length')) {
-                            err.get(key).forEach(function(errorMessage) {
+                                    erroredYet = true;
 
-                                erroredYet = true;
-
-                                self.notifications.addNotification({
-                                    message:  errorMessage,
-                                    type: 'error'
+                                    this.notifications.addNotification({
+                                        message: errorMessage,
+                                        type: 'error'
+                                    });
                                 });
-                            });
-                        }
-                    });
-                } else {
-                    self.notifications.addNotification({
-                        message:  "Error signing up: " + (err.message || err.responseText),
-                        type: 'error'
-                    });
-                }
+                            }
+                        });
+                    } else {
+                        this.notifications.addNotification({
+                            message: "Error signing up: " + (err.message || err.responseText),
+                            type: 'error'
+                        });
+                    }
 
-            }.bind(this));
+                });
         }
     }
 });
