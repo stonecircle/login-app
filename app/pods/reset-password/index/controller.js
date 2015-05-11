@@ -12,9 +12,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
 
     actions: {
         resetPassword: function(){
+            this.notifications.set('content', Ember.A());
+
             return this.validate()
             .then(() => {
-                return Ember.$.post('/api/reset_password', {
+                return Ember.$.post('/api/password/requestReset', {
                         email: this.get('email'),
                         redirect_uri: this.get('controllers.application.redirect_uri'),
                         client_id: this.get('controllers.application.client_id')

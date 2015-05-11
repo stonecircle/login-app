@@ -7,16 +7,17 @@
         <i {{bind-attr class=":fa errors.email.length:fa-close:fa-check"}}></i>
       </span>
     </div>
-    <div {{bind-attr class=":form-group :has-feedback errors.password.length:has-error:has-success password.length::empty"}}>
+    <div {{bind-attr class=":form-group :form-group--relative :has-feedback errors.password.length:has-error:has-success password.length::empty"}}>
       <label class="sr-only" for="password">{{t 'label.password'}}</label>
       {{input class="form-control large" type="password" id="password" name="password" value=password placeholder="Password"}}
+      {{#link-to 'reset-password' class="form-group__input-link"}}Forgot?{{/link-to}}
       <span {{bind-attr class=":form-control-feedback password.length::hide"}}>
         <i {{bind-attr class=":fa errors.password.length:fa-close:fa-check"}}></i>
       </span>
     </div>
     <div class="text-small text-center">
       <button class="btn pop blue large block spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
-      
+
     </div>
   </form>
   <div class="text-center">
