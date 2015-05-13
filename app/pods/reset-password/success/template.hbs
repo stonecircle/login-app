@@ -1,0 +1,8 @@
+<div class="account col-xs-10 col-sm-5 center-block text-center">
+  <form class="spacing-bottom6">
+    <p>Password reset successfully, you can now login to the application.</p>
+    {{#if content.authmaker.appDomain}}
+      <a class="btn pop blue" href="{{content.authmaker.appDomain}}"><span>Back to the Application</span></a>
+    {{/if}}
+  </form>
+</div>
