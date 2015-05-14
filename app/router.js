@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('resend-confirmation');
   this.resource('reset-password', function(){
       this.route('confirm');
+      this.route('success');
   });
   this.route('confirm-password');
   this.route('account-enabled');
