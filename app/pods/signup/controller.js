@@ -22,6 +22,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
         }
     },
 
+    termsLink: Ember.computed.alias('controllers.application.model.termsLink'),
+
     actions: {
         signUp() {
             this.notifications.set('content', Ember.A());
@@ -54,7 +56,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
                         // For each validation error
                         keys.forEach((key) => {
                             if (!erroredYet && err.get(key + '.length')) {
-                                err.get(key).forEach(function(errorMessage) {
+                                err.get(key).forEach((errorMessage) => {
 
                                     erroredYet = true;
 
