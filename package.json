@@ -10,7 +10,7 @@
     "start": "ember server",
     "build": "ember build",
     "test": "ember test",
-    "prepublish": "npm run build -- --environment=production"
+    "prepublish": "rm -rf dist && npm run build -- --environment=production"
   },
   "repository": "",
   "engines": {
@@ -34,7 +34,7 @@
     "ember-cli-qunit": "0.3.10",
     "ember-cli-uglify": "1.0.1",
     "ember-i18n": "^3.0.0",
-    "ember-validations": "^2.0.0-alpha.1",
+    "ember-validations": "^2.0.0-alpha.4",
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "uiframework": "git+ssh://git@github.com:Blooie/uiframework.git#4.2.0",
