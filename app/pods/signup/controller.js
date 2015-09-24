@@ -4,6 +4,15 @@ import EmberValidations from 'ember-validations';
 export default Ember.Controller.extend(EmberValidations, {
     needs: ['application'],
     validations: {
+        name: {
+            presense: {
+                'if': function(object){
+                    if(object.get('askName')) {
+                        return true;
+                    }
+                }
+            }
+        },
         email: {
             'is-email': true
         },
@@ -23,6 +32,7 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     termsLink: Ember.computed.alias('controllers.application.model.termsLink'),
+    askName: Ember.computed.alias('controllers.application.model.askName'),
 
     actions: {
         signUp() {
@@ -30,6 +40,7 @@ export default Ember.Controller.extend(EmberValidations, {
             return this.validate().then(() => {
 
                     return Ember.$.post('/api/signup', {
+                        name: this.get('name'),
                         email: this.get('email'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
