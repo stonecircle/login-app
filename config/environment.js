@@ -23,6 +23,10 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'style-src': "'self' 'unsafe-inline'",
       'img-src': "'self' data:"
+    },
+    
+    'ember-cli-notifications': {
+      includeFontAwesome: true
     }
   };
 
