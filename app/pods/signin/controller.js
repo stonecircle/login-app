@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import SocialLogins from 'authmaker-login-app/mixins/social-logins';
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend(EmberValidations, SocialLogins, {
+
     validations: {
         email: {
             'is-email': true

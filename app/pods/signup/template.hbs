@@ -49,7 +49,16 @@
       <button class="btn pop blue large block spacing-bottom2" {{action 'signUp'}}><span>{{t 'button.signUp'}}</span></button>
     </div>
   </form>
+  {{#if shownSocialLogins.length}}
+    <div class="spacing-bottom6 text-center">
+      {{#each shownSocialLogins as |login|}}
+        <button {{action "socialLogin" login}}> Sign up with {{login}}
+          <i class="fa fa-{{login}}-square"></i>
+        </button>
+      {{/each}}
+    </div>
+  {{/if}}
   <div class="text-center">
-    {{#link-to 'signin' class="btn hollow"}}{{t 'button.signIn'}}{{/link-to}}
+    {{#link-to 'signin' (query-params logins=logins) class="btn hollow"}}{{t 'button.signIn'}}{{/link-to}}
   </div>
 </div>
