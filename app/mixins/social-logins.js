@@ -11,7 +11,6 @@ export default Ember.Mixin.create({
 
         return this.get('socialLogins').filter((login) => {
             return (this.get('logins') ? this.get('logins').split(',') : []).find(function(allow){
-                console.log(login, allow);
                 return login === allow;
             });
         });
