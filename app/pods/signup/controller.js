@@ -46,7 +46,8 @@ export default Ember.Controller.extend(EmberValidations, {
                         passwordConfirmation: this.get('passwordConfirmation'),
                         terms: this.get('terms'),
                         redirect_uri: this.get('controllers.application.redirect_uri'),
-                        client_id: this.get('controllers.application.client_id')
+                        client_id: this.get('controllers.application.client_id'),
+                        previous_location: this.get('controllers.application.previous_location')
                     });
 
                 })
