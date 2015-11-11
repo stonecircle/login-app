@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import SocialLogins from 'authmaker-login-app/mixins/social-logins';
 
-export default Ember.Controller.extend(EmberValidations, {
-    needs: ['application'],
+export default Ember.Controller.extend(EmberValidations, SocialLogins, {
     validations: {
         name: {
             presense: {
@@ -31,8 +31,8 @@ export default Ember.Controller.extend(EmberValidations, {
         }
     },
 
-    termsLink: Ember.computed.alias('controllers.application.model.termsLink'),
-    askName: Ember.computed.alias('controllers.application.model.askName'),
+    termsLink: Ember.computed.alias('application.model.termsLink'),
+    askName: Ember.computed.alias('application.model.askName'),
 
     actions: {
         signUp() {
@@ -45,9 +45,9 @@ export default Ember.Controller.extend(EmberValidations, {
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
                         terms: this.get('terms'),
-                        redirect_uri: this.get('controllers.application.redirect_uri'),
-                        client_id: this.get('controllers.application.client_id'),
-                        previous_location: this.get('controllers.application.previous_location')
+                        redirect_uri: this.get('application.redirect_uri'),
+                        client_id: this.get('application.client_id'),
+                        previous_location: this.get('application.previous_location'),
                     });
 
                 })
