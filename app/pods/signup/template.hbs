@@ -6,7 +6,9 @@
           {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
         {{/each}}
       </div>
-      <p class="text-small">{{t "social.terms.signUp"}} <a href={{termsLink}}>{{t "social.terms.link"}}</a></p>
+      {{if termsLink}}
+        <p class="text-small">{{t "social.terms.signUp"}} <a href={{termsLink}}>{{t "social.terms.link"}}</a></p>
+      {{/if}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
       <h4>
