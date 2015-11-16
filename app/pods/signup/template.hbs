@@ -1,4 +1,14 @@
 <div class="account col-xs-10 col-sm-5 center-block">
+  {{#if shownSocialLogins.length}}
+    <div class="spacing-bottom4 text-center">
+      {{#each shownSocialLogins as |login|}}
+        {{social-signin-button login=login title=(t "button.social.signUp" network=login)}}
+      {{/each}}
+    </div>
+  {{/if}}
+  <h4 class="horizontal-seperator text-center spacing-bottom4">
+    <span class="text-uppercase pad-x1">{{t "global.optional"}}</span>
+  </h4>
   <form class="spacing-bottom6">
     {{#if askName}}
     <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{if email.length '' 'empty'}}">
@@ -49,15 +59,6 @@
       <button class="btn pop blue large block spacing-bottom2" {{action 'signUp'}}><span>{{t 'button.signUp'}}</span></button>
     </div>
   </form>
-  {{#if shownSocialLogins.length}}
-    <div class="spacing-bottom6 text-center">
-      {{#each shownSocialLogins as |login|}}
-        <button {{action "socialLogin" login}}> Sign up with {{login}}
-          <i class="fa fa-{{login}}-square"></i>
-        </button>
-      {{/each}}
-    </div>
-  {{/if}}
   <div class="text-center">
     {{#link-to 'signin' (query-params logins=logins) class="btn hollow"}}{{t 'button.signIn'}}{{/link-to}}
   </div>

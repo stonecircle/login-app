@@ -21,3 +21,16 @@
 @import "authmaker/footer";
 @import "authmaker/header";
 @import "authmaker/password";
+@import "authmaker/social";
+
+
+.horizontal-seperator {
+   width: 100%;
+   color: $grey-light;
+   border-bottom: 1px solid $grey-light;
+   line-height: 0.1em;
+
+   span {
+     background: #fff;
+   }
+}
