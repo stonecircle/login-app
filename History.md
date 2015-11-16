@@ -1,4 +1,12 @@
 
+1.11.0 / 2015-11-16
+==================
+
+  * Merge pull request #15 from Authmaker/feature/social-button
+  * Only show the separator if there are social sign ins available
+  * Slaying bind attribute deprecations
+  * Adding a social sign in button component
+
 1.10.0 / 2015-11-11
 ==================
 
