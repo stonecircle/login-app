@@ -5,10 +5,12 @@
         {{social-signin-button login=login title=(t "button.social.signUp" network=login)}}
       {{/each}}
     </div>
+    <div class="horizontal-seperator text-center spacing-bottom4">
+      <h4>
+        <span class="text-uppercase pad-x1">{{t "global.optional"}}</span>
+      </h4>
+    </div>
   {{/if}}
-  <h4 class="horizontal-seperator text-center spacing-bottom4">
-    <span class="text-uppercase pad-x1">{{t "global.optional"}}</span>
-  </h4>
   <form class="spacing-bottom6">
     {{#if askName}}
     <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{unless email.length 'empty'}}">
