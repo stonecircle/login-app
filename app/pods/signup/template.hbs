@@ -1,13 +1,18 @@
 <div class="account col-xs-10 col-sm-5 center-block">
   {{#if shownSocialLogins.length}}
-    <div class="spacing-bottom4 text-center">
-      {{#each shownSocialLogins as |login|}}
-        {{social-signin-button login=login title=(t "button.social.signUp" network=login)}}
-      {{/each}}
+    <div class="spacing-bottom4">
+      <div class="text-center spacing-bottom2">
+        {{#each shownSocialLogins as |login|}}
+          {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
+        {{/each}}
+      </div>
+      {{if termsLink}}
+        <p class="text-small">{{t "social.terms.signUp"}} <a href={{termsLink}}>{{t "social.terms.link"}}</a></p>
+      {{/if}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
       <h4>
-        <span class="text-uppercase pad-x1">{{t "global.optional"}}</span>
+        <span class="text-uppercase pad-x1">{{t "social.optional"}}</span>
       </h4>
     </div>
   {{/if}}
