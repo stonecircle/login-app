@@ -1,33 +1,36 @@
 <div class="account col-xs-10 col-sm-5 center-block">
+  {{#if shownSocialLogins.length}}
+    <div class="spacing-bottom4 text-center">
+      {{#each shownSocialLogins as |login|}}
+        {{social-signin-button login=login title=(t "button.social.signIn" network=login)}}
+      {{/each}}
+    </div>
+    <div class="horizontal-seperator text-center spacing-bottom4">
+      <h4>
+        <span class="text-uppercase pad-x1">{{t "global.optional"}}</span>
+      </h4>
+    </div>
+  {{/if}}
   <form class="spacing-bottom6">
     <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{if email.length '' 'empty'}}">
       <label class="sr-only" for="email">{{t 'label.email'}}</label>
       {{input class="form-control large" type="email" id="email" name="email" value=email placeholder="Email"}}
-      <span {{bind-attr class=":form-control-feedback email.length::hide"}}>
-        <i {{bind-attr class=":fa errors.email.length:fa-close:fa-check"}}></i>
+      <span class="form-control-feedback {{unless email.length 'hide'}}">
+        <i class="fa {{if errors.email.length 'fa-close' 'fa-check'}}"></i>
       </span>
     </div>
-    <div {{bind-attr class=":form-group :form-group--relative :has-feedback errors.password.length:has-error:has-success password.length::empty"}}>
+    <div class="form-group form-group--relative has-feedback {{if errors.password.length 'has-error' 'has-success'}} {{unless password.length 'empty'}}">
       <label class="sr-only" for="password">{{t 'label.password'}}</label>
       {{input class="form-control large" type="password" id="password" name="password" value=password placeholder="Password"}}
       {{#link-to 'reset-password' class="form-group__input-link"}}Forgot?{{/link-to}}
-      <span {{bind-attr class=":form-control-feedback password.length::hide"}}>
-        <i {{bind-attr class=":fa errors.password.length:fa-close:fa-check"}}></i>
+      <span class="form-control-feedback {{unless password.length 'hide'}}">
+        <i class="fa {{if errors.password.length 'fa-close' 'fa-check'}}"></i>
       </span>
     </div>
     <div class="text-small text-center">
       <button class="btn pop blue large block spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
     </div>
   </form>
-  {{#if shownSocialLogins.length}}
-    <div class="spacing-bottom6 text-center">
-      {{#each shownSocialLogins as |login|}}
-        <button {{action "socialLogin" login}}> Login with {{login}}
-          <i class="fa fa-{{login}}-square"></i>
-        </button>
-      {{/each}}
-    </div>
-  {{/if}}
   <div class="text-center">
     {{#link-to 'signup' (query-params logins=logins) class='btn hollow'}}{{t 'button.signUp'}}{{/link-to}}
   </div>

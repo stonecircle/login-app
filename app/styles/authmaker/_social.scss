@@ -1,0 +1,9 @@
+$networks: (
+  linkedin: #0077B5
+);
+
+@each $network, $bg-color in $networks {
+  .btn-#{$network} {
+    @include button-variant(#fff, $bg-color, darken($bg-color, 10%));
+  }
+}
