@@ -2,7 +2,7 @@
   {{#if shownSocialLogins.length}}
     <div class="spacing-bottom4 text-center">
       {{#each shownSocialLogins as |login|}}
-        {{social-signin-button login=login title=(t "button.social.signIn" network=login)}}
+        {{social-signin-button login=login title=(t "button.social.signIn" network=login) socialLogin="socialLogin"}}
       {{/each}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
