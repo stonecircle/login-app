@@ -6,8 +6,8 @@
           {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
         {{/each}}
       </div>
-      {{#if termsLink}}
-        <p class="text-small">{{t "social.terms.signUp"}} <a href={{termsLink}}>{{t "social.terms.link"}}</a></p>
+      {{#if options.termslink}}
+        <p class="text-small">{{t "social.terms.signUp"}} <a href={{options.termslink}}>{{t "social.terms.link"}}</a></p>
       {{/if}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
@@ -17,45 +17,34 @@
     </div>
   {{/if}}
   <form class="spacing-bottom6">
-    {{#if askName}}
-    <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{unless email.length 'empty'}}">
-      <label class="sr-only" for="email">{{t 'label.name'}}</label>
-      {{input class="form-control large" type="text" id="name" name="name" value=name placeholder="Name"}}
-      <span class="form-control-feedback {{if name.length 'hide'}}">
-        <i class="fa {{if errors.name.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
+    {{#if options.askName}}
+      {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='Name' name='name' id='name' type='text'}}
     {{/if}}
-    <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{unless email.length 'empty'}}">
-      <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      {{input class="form-control large" type="email" id="email" name="email" value=email placeholder="Email"}}
-      <span class="form-control-feedback {{unless email.length 'hide'}}">
-        <i class="fa {{if errors.email.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
-    <div class="form-group has-feedback {{if errors.password.length 'has-error' 'has-success'}} {{unless password.length 'empty'}}">
-      <label class="sr-only" for="password">{{t 'label.password'}}</label>
-      {{input class="form-control large" type="password" id="password" name="password" value=password placeholder="Password"}}
-      <span class="form-control-feedback {{unless password.length 'hide'}}">
-        <i class="fa {{if errors.password.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
-    <div class="form-group has-feedback {{if errors.passwordConfirmation.length 'has-error' 'has-success'}} {{unless passwordConfirmation.length 'empty'}}">
-      <label class="sr-only" for="password">{{t 'label.passwordConfirm'}}</label>
-      {{input class="form-control large" type="password" id="passwordConfirm" name="passwordConfirm" value=passwordConfirmation placeholder="Confirm Password"}}
-      <span class="form-control-feedback {{unless passwordConfirmation.length 'hide'}}">
-        <i class="fa {{if errors.passwordConfirmation.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
-    
-    {{#if termsLink}}
+
+    {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='Email' name='email' id='email' type='text'}}
+
+    {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name='password' id='password' type='password'}}
+
+    {{validated-input labelKey='label.passwordConfirm' value=passwordConfirmation hasError=errors.passwordConfirmation.length placeholder='Confirm Password' name='passwordConfirm' id='passwordConfirm' type='password'}}
+
+    {{#if options.termslink}}
       <div class="checkbox text-center text-small">
         <label>
           {{input type="checkbox" id="terms" name="terms" checked=terms}}
-          {{t "signUp.label.terms"}} <a href={{termsLink}}>terms</a>
+          {{t "signUp.label.terms"}} <a href={{options.termslink}}>terms</a>
         </label>
       </div>
     {{/if}}
+
+    {{#if options.emailSubscribe}}
+      <div class="checkbox text-center text-small">
+        <label>
+          {{input type="checkbox" id="emailSubscribe" name="emailSubscribe" checked=emailSubscribe}}
+          {{t "signUp.label.emailSubscribe"}}
+        </label>
+      </div>
+    {{/if}}
+
     <div>
       <input type="hidden" name="client_id" value="escaped_query.client_id">
       <input type="hidden" name="redirect_uri" value="escaped_query.redirect_uri">
