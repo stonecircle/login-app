@@ -1,10 +1,11 @@
+import {module, test} from 'qunit';
 import Ember from 'ember';
 import { initialize } from 'authmaker-login-app/initializers/i18n';
 
 var container, application;
 
 module('I18nInitializer', {
-  setup: function() {
+  beforeEach: function() {
     Ember.run(function() {
       application = Ember.Application.create();
       container = application.__container__;
@@ -14,9 +15,9 @@ module('I18nInitializer', {
 });
 
 // Replace this with your real tests.
-test('it works', function() {
+test('it works', function(assert) {
   initialize(container, application);
 
   // you would normally confirm the results of the initializer here
-  ok(true);
+  assert.ok(true);
 });

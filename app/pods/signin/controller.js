@@ -14,7 +14,7 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
     },
 
     actions: {
-        signIn: function(){
+        signIn() {
             this.notifications.set('content', Ember.A());
             return this.validate().then(function(){
                 return Ember.$.post('/api/login', {

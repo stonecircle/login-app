@@ -1,7 +1,7 @@
 import Base from 'ember-validations/validators/base';
 
 export default Base.extend({
-    call: function() {
+    call() {
         var val = this.model.get(this.property) ? this.model.get(this.property).trim() : null;
 
         var regex = /^http[s]?:\/\/.*$/;
