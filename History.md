@@ -1,4 +1,11 @@
 
+1.12.0 / 2016-01-19
+==================
+
+  * Merge pull request #18 from stonecircle/feature/emailSignup
+  * adding optional email subscribe checkbox to signup
+  * ember watson
+
 1.11.0 / 2015-11-16
 ==================
 
