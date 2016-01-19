@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 var i18n = {
     name: 'i18n',
-    initialize: function(container, application) {
+    initialize(container, application) {
         application.deferReadiness();
 
         Ember.$.getJSON("/i18n", function(json) {

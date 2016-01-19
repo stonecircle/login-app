@@ -1,7 +1,7 @@
 import Base from 'ember-validations/validators/base';
 
 export default Base.extend({
-    call: function() {
+    call() {
         // http://www.regxlib.com/REDetails.aspx?regexp_id=26
         var regex = /^([\+\w-]+(?:\.[\+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 

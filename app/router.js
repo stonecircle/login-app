@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('signup');
   this.route('download');
   this.route('resend-confirmation');
-  this.resource('reset-password', function(){
+  this.route('reset-password', function(){
       this.route('confirm');
       this.route('success');
   });

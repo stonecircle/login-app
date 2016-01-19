@@ -9,7 +9,7 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     actions: {
-        resendConfirmation: function(){
+        resendConfirmation() {
             return this.validate().then(function(){
                 this.set('message', 'Confirmation email sent successfully, please check your inbox for more instructions');
                 this.get('content').save().then(function(){

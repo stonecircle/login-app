@@ -1,3 +1,4 @@
+import {module, test} from 'qunit';
 import {
   urlPrefixLink
 } from 'authmaker-login-app/helpers/url-prefix-link';
@@ -5,7 +6,7 @@ import {
 module('UrlPrefixLinkHelper');
 
 // Replace this with your real tests.
-test('it works', function() {
+test('it works', function(assert) {
   var result = urlPrefixLink(42);
-  ok(result);
+  assert.ok(result);
 });

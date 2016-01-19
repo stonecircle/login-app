@@ -3,7 +3,7 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
 
-    needs: ['application'],
+    applicationController: Ember.inject.controller('application'),
     queryParams: ['email', 'code'],
 
     email: '',
@@ -26,8 +26,8 @@ export default Ember.Controller.extend(EmberValidations, {
                         resetCode: this.get('code'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
-                        redirect_uri: this.get('controllers.application.redirect_uri'),
-                        client_id: this.get('controllers.application.client_id')
+                        redirect_uri: this.get('applicationController.redirect_uri'),
+                        client_id: this.get('applicationController.client_id')
                     });
             })
             .then(() => {

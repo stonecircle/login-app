@@ -5,9 +5,9 @@ import SocialLogins from 'authmaker-login-app/mixins/social-logins';
 export default Ember.Controller.extend(EmberValidations, SocialLogins, {
     validations: {
         name: {
-            presense: {
+            presence: {
                 'if': function(object){
-                    if(object.get('askName')) {
+                    if(object.get('options.askName')) {
                         return true;
                     }
                 }
@@ -23,7 +23,7 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
         terms: {
             acceptance: {
                 'if': function(object) {
-                    if (object.get('termsLink')) {
+                    if (object.get('options.termsLink')) {
                         return true;
                     }
                 }
@@ -31,8 +31,9 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
         }
     },
 
-    termsLink: Ember.computed.alias('application.model.termsLink'),
-    askName: Ember.computed.alias('application.model.askName'),
+    options: Ember.computed.alias('application.model'),
+
+    emailSubscribe: true, //default to true
 
     actions: {
         signUp() {
@@ -40,14 +41,15 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
             return this.validate().then(() => {
 
                     return Ember.$.post('/api/signup', {
-                        name: this.get('name'),
+                        client_id: this.get('application.client_id'),
                         email: this.get('email'),
+                        emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
+                        name: this.get('name'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
-                        terms: this.get('terms'),
-                        redirect_uri: this.get('application.redirect_uri'),
-                        client_id: this.get('application.client_id'),
                         previous_location: this.get('application.previous_location'),
+                        redirect_uri: this.get('application.redirect_uri'),
+                        terms: this.get('terms'),
                     });
 
                 })
