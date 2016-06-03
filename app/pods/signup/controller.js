@@ -22,10 +22,10 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                 }
             }
         },
-        phone: {
+        contactNumber: {
             presence: {
                 'if': function(object){
-                    if(object.get('options.askPhone')) {
+                    if(object.get('options.askContactNumber')) {
                         return true;
                     }
                 }
@@ -64,7 +64,7 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                         emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
                         name: this.get('name'),
                         companyName: this.get('companyName'),
-                        phone: this.get('phone'),
+                        contactNumber: this.get('contactNumber'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
                         previous_location: this.get('application.previous_location'),
