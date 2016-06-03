@@ -21,6 +21,14 @@
       {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='Name' name='name' id='name' type='text'}}
     {{/if}}
 
+    {{#if options.askCompany}}
+      {{validated-input labelKey='label.companyName' value=companyName hasError=errors.companyName.length placeholder='Company name' name='companyName' id='companyName' type='text'}}
+    {{/if}}
+
+    {{#if options.askPhone}}
+      {{validated-input labelKey='label.phone' value=askPhone hasError=errors.askPhone.length placeholder='Phone' name='phone' id='phone' type='text'}}
+    {{/if}}
+
     {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='Email' name='email' id='email' type='text'}}
 
     {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name='password' id='password' type='password'}}

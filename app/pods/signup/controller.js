@@ -13,6 +13,24 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                 }
             }
         },
+        companyName: {
+            presence: {
+                'if': function(object){
+                    if(object.get('options.askCompany')) {
+                        return true;
+                    }
+                }
+            }
+        },
+        phone: {
+            presence: {
+                'if': function(object){
+                    if(object.get('options.askPhone')) {
+                        return true;
+                    }
+                }
+            }
+        },
         email: {
             'is-email': true
         },
