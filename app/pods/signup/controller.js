@@ -63,6 +63,8 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                         email: this.get('email'),
                         emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
                         name: this.get('name'),
+                        companyName: this.get('companyName'),
+                        phone: this.get('phone'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
                         previous_location: this.get('application.previous_location'),
