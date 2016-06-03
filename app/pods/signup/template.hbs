@@ -6,8 +6,8 @@
           {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
         {{/each}}
       </div>
-      {{#if options.termslink}}
-        <p class="text-small">{{t "social.terms.signUp"}} <a href={{options.termslink}}>{{t "social.terms.link"}}</a></p>
+      {{#if options.termsLink}}
+        <p class="text-small">{{t "social.terms.signUp"}} <a href={{options.termsLink}}>{{t "social.terms.link"}}</a></p>
       {{/if}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
@@ -19,6 +19,14 @@
   <form class="spacing-bottom6">
     {{#if options.askName}}
       {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='Name' name='name' id='name' type='text'}}
+    {{/if}}
+
+    {{#if options.askCompany}}
+      {{validated-input labelKey='label.companyName' value=companyName hasError=errors.companyName.length placeholder='Company name' name='companyName' id='companyName' type='text'}}
+    {{/if}}
+
+    {{#if options.askContactNumber}}
+      {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=errors.askContactNumber.length placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
     {{/if}}
 
     {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='Email' name='email' id='email' type='text'}}
