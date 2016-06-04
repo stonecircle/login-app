@@ -35,11 +35,11 @@
 
     {{validated-input labelKey='label.passwordConfirm' value=passwordConfirmation hasError=errors.passwordConfirmation.length placeholder='Confirm Password' name='passwordConfirm' id='passwordConfirm' type='password'}}
 
-    {{#if options.termslink}}
+    {{#if options.termsLink}}
       <div class="checkbox text-center text-small">
         <label>
           {{input type="checkbox" id="terms" name="terms" checked=terms}}
-          {{t "signUp.label.terms"}} <a href={{options.termslink}}>terms</a>
+          {{t "signUp.label.terms"}} <a href={{options.termsLink}}>terms</a>
         </label>
       </div>
     {{/if}}
