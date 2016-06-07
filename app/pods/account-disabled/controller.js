@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
     actions: {
         logOut() {
-            window.location = `/api/logout?redirect=${this.get('applicationController.redirect_uri')}`;
+            window.location = `/api/logout?redirect=${this.get('application.redirect_uri')}`;
         }
     }
 });
