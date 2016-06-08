@@ -6,8 +6,8 @@
           {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
         {{/each}}
       </div>
-      {{#if options.termslink}}
-        <p class="text-small">{{t "social.terms.signUp"}} <a href={{options.termslink}}>{{t "social.terms.link"}}</a></p>
+      {{#if options.termsLink}}
+        <p class="text-small">{{t "social.terms.signUp"}} <a href={{options.termsLink}}>{{t "social.terms.link"}}</a></p>
       {{/if}}
     </div>
     <div class="horizontal-seperator text-center spacing-bottom4">
@@ -21,17 +21,25 @@
       {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='Name' name='name' id='name' type='text'}}
     {{/if}}
 
+    {{#if options.askCompany}}
+      {{validated-input labelKey='label.companyName' value=companyName hasError=errors.companyName.length placeholder='Company name' name='companyName' id='companyName' type='text'}}
+    {{/if}}
+
+    {{#if options.askContactNumber}}
+      {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=errors.askContactNumber.length placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
+    {{/if}}
+
     {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='Email' name='email' id='email' type='text'}}
 
     {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name='password' id='password' type='password'}}
 
     {{validated-input labelKey='label.passwordConfirm' value=passwordConfirmation hasError=errors.passwordConfirmation.length placeholder='Confirm Password' name='passwordConfirm' id='passwordConfirm' type='password'}}
 
-    {{#if options.termslink}}
+    {{#if options.termsLink}}
       <div class="checkbox text-center text-small">
         <label>
           {{input type="checkbox" id="terms" name="terms" checked=terms}}
-          {{t "signUp.label.terms"}} <a href={{options.termslink}}>terms</a>
+          {{t "signUp.label.terms"}} <a href={{options.termsLink}}>terms</a>
         </label>
       </div>
     {{/if}}

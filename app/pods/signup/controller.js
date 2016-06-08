@@ -13,6 +13,24 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                 }
             }
         },
+        companyName: {
+            presence: {
+                'if': function(object){
+                    if(object.get('options.askCompany')) {
+                        return true;
+                    }
+                }
+            }
+        },
+        contactNumber: {
+            presence: {
+                'if': function(object){
+                    if(object.get('options.askContactNumber')) {
+                        return true;
+                    }
+                }
+            }
+        },
         email: {
             'is-email': true
         },
@@ -45,6 +63,8 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                         email: this.get('email'),
                         emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
                         name: this.get('name'),
+                        companyName: this.get('companyName'),
+                        contactNumber: this.get('contactNumber'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
                         previous_location: this.get('application.previous_location'),
