@@ -44,6 +44,6 @@
     "ember-watson": "^0.8.0",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "uiframework": "git+ssh://git@github.com:Blooie/uiframework.git#4.2.0"
+    "uiframework": "^0.1.0"
   }
 }
