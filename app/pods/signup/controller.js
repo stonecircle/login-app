@@ -31,6 +31,15 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                 }
             }
         },
+        website: {
+            presence: {
+                'if': function(object){
+                    if(object.get('options.askWebsite')) {
+                        return true;
+                    }
+                }
+            }
+        },
         email: {
             'is-email': true
         },
@@ -65,6 +74,7 @@ export default Ember.Controller.extend(EmberValidations, SocialLogins, {
                         name: this.get('name'),
                         companyName: this.get('companyName'),
                         contactNumber: this.get('contactNumber'),
+                        website: this.get('website'),
                         password: this.get('password'),
                         passwordConfirmation: this.get('passwordConfirmation'),
                         previous_location: this.get('application.previous_location'),

@@ -25,6 +25,10 @@
       {{validated-input labelKey='label.companyName' value=companyName hasError=errors.companyName.length placeholder='Company name' name='companyName' id='companyName' type='text'}}
     {{/if}}
 
+    {{#if options.askWebsite}}
+      {{validated-input labelKey='label.website' value=website hasError=errors.website.length placeholder=(t 'signUp.placeholder.website') name='website' id='website' type='text'}}
+    {{/if}}
+
     {{#if options.askContactNumber}}
       {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=errors.askContactNumber.length placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
     {{/if}}
