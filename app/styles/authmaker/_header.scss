@@ -7,6 +7,7 @@
   h1 a {
     @include size(18rem,6rem);
     background: url("/logo.svg") no-repeat;
+    background-position: center;
     background-size: contain;
     display: block;
     margin: 0 auto;
