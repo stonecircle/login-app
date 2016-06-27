@@ -5,6 +5,6 @@ export default Ember.Mixin.create({
 
     beforeModel() {
         let routeName = this.get('routeName');
-        $(document).attr('title', this.get('i18n').t(`titles.${routeName}`));
+        Ember.$(document).attr('title', this.get('i18n').t(`titles.${routeName}`));
     }
 });
