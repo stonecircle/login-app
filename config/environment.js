@@ -20,6 +20,10 @@ module.exports = function(environment) {
       // when it is created
     },
 
+    i18n: {
+        defaultLocale: 'en'
+    },
+
     contentSecurityPolicy: {
       'style-src': "'self' 'unsafe-inline'",
       'img-src': "'self' data:"
