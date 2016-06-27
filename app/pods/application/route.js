@@ -1,6 +1,14 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const { Route, inject } = Ember;
+
+export default Route.extend({
+    translationsFetch: inject.service(),
+
+    beforeModel() {
+        return this.get('translationsFetch').fetch();
+    },
+
     model() {
         return Ember.$.getJSON('/settings/login');
     }

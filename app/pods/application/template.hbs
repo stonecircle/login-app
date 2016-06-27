@@ -5,9 +5,9 @@
 </div>
 <div class="container">
   <div class="main spacing-bottom4">
-    <header class="auth-header text-center pad-y4">
+    <header class="auth-header text-center pad-y3">
       <h1 class="spacing0">
-        <a class="text-hide">Authmaker</a>
+        <a class="text-hide">{{content.authmaker.app_name}}</a>
       </h1>
     </header>
     {{{outlet}}}
@@ -22,6 +22,6 @@
         <li><a href={{termsLink}}>Terms</a></li>
       {{/if}}
     </ul>
-    <a href="http://authmaker.com">Simple authentication powered by AuthMaker</a>
+    <a class="hide-poweredby" href="http://authmaker.com">{{t "brand.poweredBy"}}</a>
   </footer>
 </div>
