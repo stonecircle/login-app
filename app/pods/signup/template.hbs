@@ -23,7 +23,7 @@
   {{/if}}
   <form class="spacing-bottom6">
     {{#if options.askName}}
-      {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='Name' name='name' id='name' type='text'}}
+      {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='John Doe' name='name' id='name' type='text'}}
     {{/if}}
 
     {{#if options.askCompany}}
@@ -38,7 +38,7 @@
       {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=errors.askContactNumber.length placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
     {{/if}}
 
-    {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='Email' name='email' id='email' type='text'}}
+    {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='your@email.address' name='email' id='email' type='text'}}
 
     {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name='password' id='password' type='password'}}
 
@@ -70,7 +70,7 @@
       <input type="hidden" name="referer" value="referer">
     </div>
     <div class="spacing-top3">
-      <button class="btn pop blue large block spacing-bottom2" {{action 'signUp'}}><span>{{t 'button.signUp'}}</span></button>
+      <button id="button-primary" class="btn pop blue large spacing-bottom2" {{action 'signUp'}}><span>{{t 'button.signUp'}}</span></button>
     </div>
   </form>
   <div class="text-center">

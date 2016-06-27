@@ -1,6 +1,6 @@
 <div class="form-group has-feedback {{if hasError 'has-error'}} {{unless value.length 'empty'}}">
-  <label class="sr-only" for="email">{{t labelKey}}</label>
-  {{input class="form-control large" type=type name=name value=value placeholder=placeholder}}
+  <label for={{name}}>{{t labelKey}}</label>
+  {{input class="input-primary form-control large" type=type name=name value=value placeholder=placeholder}}
   <span class="form-control-feedback {{unless value.length 'hide'}}">
     <i class="fa {{if hasError 'fa-close' 'fa-check'}}"></i>
   </span>
