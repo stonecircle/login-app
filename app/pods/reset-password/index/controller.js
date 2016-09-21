@@ -23,7 +23,7 @@ export default Ember.Controller.extend(EmberValidations, {
                     });
             })
             .then(() => {
-              this.transitionToRoute('reset-password.success');
+              this.transitionToRoute('reset-password.reset-sent');
             }).catch((err) => {
                 var keys = Ember.keys(err);
                 var erroredYet = false;

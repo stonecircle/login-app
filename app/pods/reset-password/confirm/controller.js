@@ -19,7 +19,7 @@ export default Ember.Controller.extend(EmberValidations, {
     actions: {
         resetPassword(){
             this.notifications.set('content', Ember.A());
-            
+
             return this.validate().then(() => {
                 return Ember.$.post('/api/password/reset', {
                         email: this.get('email'),
@@ -31,10 +31,7 @@ export default Ember.Controller.extend(EmberValidations, {
                     });
             })
             .then(() => {
-                this.notifications.addNotification({
-                    message:  'Password reset successfully, you can now login to the application.',
-                    type: 'success'
-                });
+                this.transitionToRoute('reset-password.success');
             })
             .catch((err) => {
                 var keys = Ember.keys(err);
