@@ -8,4 +8,9 @@
       <p>{{text-links (t 'accountEnabled.message')}}</p>
     </div>
   </div>
+  {{#if model.authmaker.appDomain}}
+    <div class="pad2 text-center">
+      <a id="button-primary" class="btn pop blue" href={{model.authmaker.appDomain}}><span>Login</span></a>
+    </div>
+  {{/if}}
 </div>

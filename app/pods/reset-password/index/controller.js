@@ -23,10 +23,7 @@ export default Ember.Controller.extend(EmberValidations, {
                     });
             })
             .then(() => {
-                this.notifications.addNotification({
-                    message:  'Reset email sent successfully, please check your inbox for more instructions',
-                    type: 'info'
-                });
+              this.transitionToRoute('reset-password.success');
             }).catch((err) => {
                 var keys = Ember.keys(err);
                 var erroredYet = false;
