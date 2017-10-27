@@ -1,0 +1,61 @@
+// Frame
+//
+// Base style frame container for content
+
+.frame {
+  position: relative;
+  background: $frame-bg;
+  border: {
+    width: 1px;
+    style: solid;
+    color: $frame-border-color;
+    radius: $frame-border-radius;
+  }
+}
+
+// Frame and modal share same style header
+.frame-header,
+.modal-header {
+  @include border-top-radius($frame-border-radius - .1);
+  background-color: $frame-header-bg;
+  padding: $frame-header-padding;
+  border-bottom: 1px solid $frame-header-border-color;
+  font-weight: bold;
+
+  .header-title {
+    @extend .futura;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+// Frame and modal share same style footer
+.frame-footer,
+.modal-footer {
+  @include clearfix();
+  @include border-bottom-radius($frame-border-radius - .1);
+  background-color: $frame-footer-bg;
+  padding: $frame-footer-padding;
+  border-top: 1px solid $frame-footer-border-color;
+
+  .detail-title {
+    @extend .futura;
+    @extend .text-uppercase;
+    display: block;
+    font-weight: bold;
+  }
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+}

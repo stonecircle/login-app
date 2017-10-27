@@ -7,6 +7,7 @@
   {{#if shownSocialLogins.length}}
     <div class="spacing-bottom4">
       <div class="text-center spacing-bottom2">
+
         {{#each shownSocialLogins as |login|}}
           {{social-signin-button login=login title=(t "button.social.signUp" network=login) socialLogin="socialLogin"}}
         {{/each}}
@@ -23,26 +24,27 @@
   {{/if}}
   <form class="spacing-bottom6">
     {{#if options.askName}}
-      {{validated-input labelKey='label.name' value=name hasError=errors.name.length placeholder='John Doe' name='name' id='name' type='text'}}
+      {{validated-input labelKey='label.name' value=name hasError=(not validations.attrs.name.isTruelyValid) placeholder='John Doe' name='name' id='name' type='text'}}
     {{/if}}
 
     {{#if options.askCompany}}
-      {{validated-input labelKey='label.companyName' value=companyName hasError=errors.companyName.length placeholder='Company name' name='companyName' id='companyName' type='text'}}
+      {{validated-input labelKey='label.companyName' value=companyName hasError=(not validations.attrs.companyName.isTruelyValid) placeholder='Company name' name='companyName' id='companyName' type='text'}}
     {{/if}}
 
     {{#if options.askWebsite}}
-      {{validated-input labelKey='label.website' value=website hasError=errors.website.length placeholder=(t 'signUp.placeholder.website') name='website' id='website' type='text'}}
+      {{validated-input labelKey='label.website' value=website hasError=(not validations.attrs.website.isTruelyValid) placeholder=(t 'signUp.placeholder.website') name='website' id='website' type='text'}}
     {{/if}}
 
     {{#if options.askContactNumber}}
-      {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=errors.askContactNumber.length placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
+      {{validated-input labelKey='label.contactNumber' value=contactNumber hasError=(not validations.attrs.contactNumber.isTruelyValid) placeholder='Contact Number' name='contactNumber' id='contactNumber' type='text'}}
     {{/if}}
 
-    {{validated-input labelKey='label.email' value=email hasError=errors.email.length placeholder='your@email.address' name='email' id='email' type='text'}}
 
-    {{validated-input labelKey='label.password' value=password hasError=errors.password.length placeholder='Password' name='password' id='password' type='password'}}
+    {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='your@email.address' name='email' id='email' type='text'}}
 
-    {{validated-input labelKey='label.passwordConfirm' value=passwordConfirmation hasError=errors.passwordConfirmation.length placeholder='Confirm Password' name='passwordConfirm' id='passwordConfirm' type='password'}}
+    {{validated-input labelKey='label.password' value=password hasError=(not validations.attrs.password.isTruelyValid) placeholder='Password' name='password' id='password' type='password'}}
+
+    {{validated-input labelKey='label.passwordConfirm' value=passwordConfirmation hasError=(not validations.attrs.passwordConfirmation.isTruelyValid) placeholder='Confirm Password' name='passwordConfirm' id='passwordConfirm' type='password'}}
 
     {{#if options.termsLink}}
       <div class="checkbox text-center text-small">

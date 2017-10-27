@@ -1,0 +1,27 @@
+//
+// Frame
+// --------------------------------------------------
+
+
+// Frame main
+// -------------------------
+
+$frame-bg:                    #fff !default;
+$frame-border-color:          #e5e6e9 #dfe0e4 #d0d1d5 !default;
+$frame-border-radius:         $border-radius-base !default;
+
+
+// Frame header
+// -------------------------
+
+$frame-header-bg:             #f6f7f8 !default;
+$frame-header-border-color:   #d0d1d5 !default;
+$frame-header-padding:        .8rem 1.2rem !default;
+
+
+// Frame footer
+// -------------------------
+
+$frame-footer-bg:             #fafbfb !default;
+$frame-footer-border-color:   #ebebeb !default;
+$frame-footer-padding:        $frame-header-padding !default;

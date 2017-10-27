@@ -1,0 +1,105 @@
+//
+// CSS arrow
+//
+// Source: http://dontwakemeup.com/sass-mixin-for-pseudo-element-css-arrows/
+
+@mixin css-arrow($arrow-position, $arrow-size, $x-position: 50%, $y-position: 50%, $arrow-color: #fff, $border: false, $border-color: $arrow-color) {
+  &:before {
+    position: absolute;
+    border: $arrow-size solid transparent;
+    content: "";
+    top: auto;
+    left: auto;
+    height: 0;
+    width: 0;
+    margin: 0;
+    pointer-events: none;
+    z-index: $zindex-arrow;
+  }
+
+  @if $border == true {
+    &:after {
+      position: absolute;
+      border: ($arrow-size + 1) solid transparent;
+      content: "";
+      top: auto;
+      left: auto;
+      height: 0;
+      width: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+  }
+
+  @if $arrow-position == "top" {
+    &:before {
+      bottom: 100%;
+      left: $x-position;
+      border-bottom-color: $arrow-color;
+      margin-left: (-$arrow-size);
+    }
+
+    @if $border == true {
+      &:after {
+        bottom: 100%;
+        left: $x-position;
+        border-bottom-color: $border-color;
+        margin-left: (-($arrow-size + 1));
+      }
+    }
+  }
+
+  @if $arrow-position == "right" {
+    &:before {
+      top: $y-position;
+      left: 100%;
+      border-left-color: $arrow-color;
+      margin-top: (-$arrow-size);
+    }
+
+    @if $border == true {
+      &:after {
+        top: $y-position;
+        left: 100%;
+        border-left-color: $border-color;
+        margin-top: (-($arrow-size + 1));
+      }
+    }
+  }
+
+  @if $arrow-position == "bottom" {
+    &:before {
+      top: 100%;
+      left: $x-position;
+      border-top-color: $arrow-color;
+      margin-left: (-$arrow-size);
+    }
+
+    @if $border == true {
+      &:after {
+        top: 100%;
+        left: $x-position;
+        border-top-color: $border-color;
+        margin-left: (-($arrow-size + 1));
+      }
+    }
+  }
+
+  @if $arrow-position == "left" {
+    &:before {
+      top: $y-position;
+      right: 100%;
+      border-right-color: $arrow-color;
+      margin-top: (-$arrow-size);
+    }
+
+    @if $border == true {
+      &:after {
+        top: $y-position;
+        right: 100%;
+        border-right-color: $border-color;
+        margin-top: (-($arrow-size + 1));
+      }
+    }
+  }
+}

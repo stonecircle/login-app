@@ -1,15 +1,18 @@
-import Ember from 'ember';
-
-const { Route, inject } = Ember;
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
-    translationsFetch: inject.service(),
+  ajax: service(),
+  i18n: service(),
 
-    beforeModel() {
-        return this.get('translationsFetch').fetch();
-    },
+  beforeModel() {
+    get(this, 'ajax').request('/i18n').then((translations) => {
+      get(this, 'i18n').addTranslations('en', translations);
+    })
+  },
 
-    model() {
-        return Ember.$.getJSON('/settings/login');
-    }
+  model() {
+    return get(this, 'ajax').request('/settings/login');
+  }
 });

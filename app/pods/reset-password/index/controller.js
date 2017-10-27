@@ -1,57 +1,43 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(EmberValidations, {
-    applicationController: Ember.inject.controller('application'),
+import { get } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-    validations: {
-        email: {
-            'is-email': true
-        }
-    },
+const Validations = buildValidations({
+  email: validator('format', {
+    type: 'email'
+  }),
+});
 
-    actions: {
-        resetPassword() {
-            this.notifications.set('content', Ember.A());
+export default Ember.Controller.extend(Validations, {
+  ajax: service(),
+  notifications: service('notification-messages'),
 
-            return this.validate()
-            .then(() => {
-                return Ember.$.post('/api/password/requestReset', {
-                        email: this.get('email'),
-                        redirect_uri: this.get('applicationController.redirect_uri'),
-                        client_id: this.get('applicationController.client_id')
-                    });
-            })
-            .then(() => {
-              this.transitionToRoute('reset-password.reset-sent');
-            }).catch((err) => {
-                var keys = Ember.keys(err);
-                var erroredYet = false;
+  applicationController: Ember.inject.controller('application'),
 
-                if(this.get('isInvalid')){
-                    // For each validation error
-                    keys.forEach((key) => {
-                        if(!erroredYet && err.get(key + '.length')) {
-                            err.get(key).forEach((errorMessage) => {
+  actions: {
+    resetPassword() {
+      get(this, 'notifications').clearAll();
 
-                                erroredYet = true;
+      if (!get(this, 'validations.isValid')) {
+        const firstError = get(this, 'validations.errors.0');
+        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+      }
 
-                                this.notifications.addNotification({
-                                    message:  errorMessage,
-                                    type: 'error'
-                                });
-                            });
-                        }
-                    });
-                } else {
-
-                    this.notifications.addNotification({
-                        message:  "Error signing in: " + (err.message || err.responseText),
-                        type: 'error'
-                    });
-                }
-
-            });
-        }
+      return get(this, 'ajax').post('/api/password/requestReset', {
+        dataType: 'text',
+        data: {
+          email: this.get('email'),
+          redirect_uri: this.get('applicationController.redirect_uri'),
+          client_id: this.get('applicationController.client_id')
+        },
+      })
+      .then(() => {
+        this.transitionToRoute('reset-password.reset-sent');
+      }).catch((err) => {
+        get(this, 'notifications').error(`Error resetting password: ${err.payload}`);
+      });
     }
+  }
 });

@@ -1,0 +1,13 @@
+// Font Awesome
+//
+// http://fortawesome.github.io/Font-Awesome/
+
+@mixin fa-icon-rotate($degrees, $rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation});
+  transform: rotate($degrees);
+}
+
+@mixin fa-icon-flip($horiz, $vert, $rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation});
+  transform: scale($horiz, $vert);
+}

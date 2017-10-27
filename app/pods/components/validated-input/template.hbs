@@ -2,6 +2,6 @@
   <label for={{name}}>{{t labelKey}}</label>
   {{input class="input-primary form-control large" type=type name=name value=value placeholder=placeholder}}
   <span class="form-control-feedback {{unless value.length 'hide'}}">
-    <i class="fa {{if hasError 'fa-close' 'fa-check'}}"></i>
+    {{fa-icon icon=(if hasError 'close' 'check')}}
   </span>
 </div>

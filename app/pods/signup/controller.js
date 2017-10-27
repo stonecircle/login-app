@@ -1,124 +1,85 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 import SocialLogins from 'authmaker-login-app/mixins/social-logins';
 
-export default Ember.Controller.extend(EmberValidations, SocialLogins, {
-    validations: {
-        name: {
-            presence: {
-                'if': function(object){
-                    if(object.get('options.askName')) {
-                        return true;
-                    }
-                }
-            }
-        },
-        companyName: {
-            presence: {
-                'if': function(object){
-                    if(object.get('options.askCompany')) {
-                        return true;
-                    }
-                }
-            }
-        },
-        contactNumber: {
-            presence: {
-                'if': function(object){
-                    if(object.get('options.askContactNumber')) {
-                        return true;
-                    }
-                }
-            }
-        },
-        website: {
-            presence: {
-                'if': function(object){
-                    if(object.get('options.askWebsite')) {
-                        return true;
-                    }
-                }
-            }
-        },
-        email: {
-            'is-email': true
-        },
-        password: {
-            confirmation: true,
-            presence: true
-        },
-        terms: {
-            acceptance: {
-                'if': function(object) {
-                    if (object.get('options.termsLink')) {
-                        return true;
-                    }
-                }
-            }
+import { get, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { validator, buildValidations } from 'ember-cp-validations';
+
+const Validations = buildValidations({
+  name: validator('presence', {
+    presence: true,
+    disabled: computed.not('model.options.askName')
+  }),
+  website: validator('format', {
+    type: 'url',
+    disabled: computed.not('model.options.askWebsite')
+  }),
+  companyName: validator('presence', {
+    presence: true,
+    disabled: computed.not('model.options.askCompany')
+  }),
+  contactNumber: validator('presence', {
+    presence: true,
+    disabled: computed.not('model.options.askContactNumber')
+  }),
+  email: validator('format', {
+    type: 'email'
+  }),
+  password: validator('presence', {
+    presence: true,
+  }),
+
+  passwordConfirmation: validator('confirmation', {
+    on: 'password',
+    message: 'Passwords do not match'
+  }),
+});
+
+export default Ember.Controller.extend(SocialLogins, Validations, {
+  ajax: service(),
+  notifications: service('notification-messages'),
+
+  options: Ember.computed.alias('application.model'),
+
+  emailSubscribe: true, //default to true
+
+  actions: {
+    signUp() {
+      get(this, 'notifications').clearAll();
+
+      if (!get(this, 'validations.isValid')) {
+        const firstError = get(this, 'validations.errors.0');
+        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+      }
+
+      return get(this, 'ajax').post('/api/signup', {
+        dataType: 'text',
+        data: {
+          client_id: this.get('application.client_id'),
+          email: this.get('email'),
+          emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
+          name: this.get('name'),
+          companyName: this.get('companyName'),
+          contactNumber: this.get('contactNumber'),
+          website: this.get('website'),
+          password: this.get('password'),
+          passwordConfirmation: this.get('passwordConfirmation'),
+          previous_location: this.get('application.previous_location'),
+          redirect_uri: this.get('application.redirect_uri'),
+          terms: this.get('terms'),
         }
-    },
+      })
+        .then(() => {
+          get(this, 'notifications').info("Success!", {
+            autoClear: true,
+          });
 
-    options: Ember.computed.alias('application.model'),
-
-    emailSubscribe: true, //default to true
-
-    actions: {
-        signUp() {
-            this.notifications.set('content', Ember.A());
-            return this.validate().then(() => {
-
-                    return Ember.$.post('/api/signup', {
-                        client_id: this.get('application.client_id'),
-                        email: this.get('email'),
-                        emailSubscribe: this.get('emailSubscribe') && this.get('options.emailSubscribe'),
-                        name: this.get('name'),
-                        companyName: this.get('companyName'),
-                        contactNumber: this.get('contactNumber'),
-                        website: this.get('website'),
-                        password: this.get('password'),
-                        passwordConfirmation: this.get('passwordConfirmation'),
-                        previous_location: this.get('application.previous_location'),
-                        redirect_uri: this.get('application.redirect_uri'),
-                        terms: this.get('terms'),
-                    });
-
-                })
-                .then(() => {
-                    this.notifications.addNotification({
-                        message: "Success!",
-                        type: 'info'
-                    });
-
-                    //success
-                    location.reload();
-                })
-                .catch((err) => {
-                    var keys = Ember.keys(err);
-                    var erroredYet = false;
-
-                    if (this.get('isInvalid')) {
-                        // For each validation error
-                        keys.forEach((key) => {
-                            if (!erroredYet && err.get(key + '.length')) {
-                                err.get(key).forEach((errorMessage) => {
-
-                                    erroredYet = true;
-
-                                    this.notifications.addNotification({
-                                        message: errorMessage,
-                                        type: 'error'
-                                    });
-                                });
-                            }
-                        });
-                    } else {
-                        this.notifications.addNotification({
-                            message: "Error signing up: " + (err.message || err.responseText),
-                            type: 'error'
-                        });
-                    }
-
-                });
-        }
+          //success
+          location.reload();
+        })
+        .catch((err) => {
+          get(this, 'notifications').error(`Error signing up:  ${err.payload}`);
+        });
     }
+  }
 });

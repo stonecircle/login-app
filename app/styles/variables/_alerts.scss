@@ -1,0 +1,26 @@
+//
+// Alerts
+// --------------------------------------------------
+
+$alert-padding:                     12px !default;
+$alert-border-radius:               $border-radius-base !default;
+
+// Success alert
+$alert-success-bg:                  $state-success-bg !default;
+$alert-success-text:                $state-success-text !default;
+$alert-success-border:              $state-success-border !default;
+
+// Info alert
+$alert-info-bg:                     $state-info-bg !default;
+$alert-info-text:                   $state-info-text !default;
+$alert-info-border:                 $state-info-border !default;
+
+// Warning alert
+$alert-warning-bg:                  $state-warning-bg !default;
+$alert-warning-text:                $state-warning-text !default;
+$alert-warning-border:              $state-warning-border !default;
+
+// Error alert
+$alert-error-bg:                    $state-error-bg !default;
+$alert-error-text:                  $state-error-text !default;
+$alert-error-border:                $state-error-border !default;

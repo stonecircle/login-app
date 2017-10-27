@@ -1,17 +1,21 @@
-/* jshint node: true */
+/* eslint-env node */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'authmaker-login-app',
     podModulePrefix: 'authmaker-login-app/pods',
-    environment: environment,
-    baseURL: '/',
+    environment,
+    rootURL: '/',
     locationType: 'auto',
-    urlPrefix: 'local',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
@@ -23,12 +27,6 @@ module.exports = function(environment) {
     i18n: {
         defaultLocale: 'en'
     },
-
-    contentSecurityPolicy: {
-      'style-src': "'self' 'unsafe-inline'",
-      'img-src': "'self' data:"
-    },
-    
     'ember-cli-notifications': {
       includeFontAwesome: true
     }
@@ -40,11 +38,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // ENV.apiUrl = 'http://localhost:5000'
   }
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -55,11 +53,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.urlPrefix =  '';
-  }
-
-  if (environment === 'staging') {
-    ENV.urlPrefix =  'staging';
+    // here you can enable a production-specific feature
   }
 
   return ENV;

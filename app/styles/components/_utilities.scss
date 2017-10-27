@@ -1,0 +1,200 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix();
+}
+.center-block {
+  @include center-block();
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.vertical-align {
+  @include vertical-align();
+}
+
+
+// Toggling content
+// -------------------------
+
+// Note: Deprecated .hide in favor of .hidden or .sr-only (as appropriate) in v3.0.1
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  @include text-hide();
+}
+.sr-only {
+  @include sr-only();
+}
+
+
+// Responsive visibility
+// -------------------------
+
+.visible-xs {
+  @include hide($beta);
+}
+.visible-sm {
+  @include hide($delta);
+}
+.visible-md {
+  @include hide($gamma);
+}
+.hidden-xs {
+  @include show($beta);
+}
+.hidden-sm {
+  @include show($delta);
+}
+.hidden-md {
+  @include show($gamma);
+}
+
+
+// Spacing
+// -------------------------
+
+//TODO: Make this a list-map/function once lib-sass has support
+.spacing0 { @include spacing(0); }
+.spacing1 { @include spacing(1); }
+.spacing2 { @include spacing(2); }
+.spacing3 { @include spacing(3); }
+.spacing4 { @include spacing(4); }
+.spacing5 { @include spacing(5); }
+.spacing6 { @include spacing(6); }
+
+.spacing-top0 { @include spacing(0, top); }
+.spacing-top1 { @include spacing(1, top); }
+.spacing-top2 { @include spacing(2, top); }
+.spacing-top3 { @include spacing(3, top); }
+.spacing-top4 { @include spacing(4, top); }
+.spacing-top5 { @include spacing(5, top); }
+.spacing-top6 { @include spacing(6, top); }
+
+.spacing-right0 { @include spacing(0, right); }
+.spacing-right1 { @include spacing(1, right); }
+.spacing-right2 { @include spacing(2, right); }
+.spacing-right3 { @include spacing(3, right); }
+.spacing-right4 { @include spacing(4, right); }
+.spacing-right5 { @include spacing(5, right); }
+.spacing-right6 { @include spacing(6, right); }
+
+.spacing-bottom0 { @include spacing(0, bottom); }
+.spacing-bottom1 { @include spacing(1, bottom); }
+.spacing-bottom2 { @include spacing(2, bottom); }
+.spacing-bottom3 { @include spacing(3, bottom); }
+.spacing-bottom4 { @include spacing(4, bottom); }
+.spacing-bottom5 { @include spacing(5, bottom); }
+.spacing-bottom6 { @include spacing(6, bottom); }
+
+.spacing-left0 { @include spacing(0, left); }
+.spacing-left1 { @include spacing(1, left); }
+.spacing-left2 { @include spacing(2, left); }
+.spacing-left3 { @include spacing(3, left); }
+.spacing-left4 { @include spacing(4, left); }
+.spacing-left5 { @include spacing(5, left); }
+.spacing-left6 { @include spacing(6, left); }
+
+
+// Padding
+// -------------------------
+
+//TODO: Make this a list-map/function once lib-sass has support
+.pad0 { @include pad(0); }
+.pad1 { @include pad(1); }
+.pad2 { @include pad(2); }
+.pad3 { @include pad(3); }
+.pad4 { @include pad(4); }
+.pad5 { @include pad(5); }
+.pad6 { @include pad(6); }
+
+.pad-top0 { @include pad(0, top); }
+.pad-top1 { @include pad(1, top); }
+.pad-top2 { @include pad(2, top); }
+.pad-top3 { @include pad(3, top); }
+.pad-top4 { @include pad(4, top); }
+.pad-top5 { @include pad(5, top); }
+.pad-top6 { @include pad(6, top); }
+
+.pad-right0 { @include pad(0, right); }
+.pad-right1 { @include pad(1, right); }
+.pad-right2 { @include pad(2, right); }
+.pad-right3 { @include pad(3, right); }
+.pad-right4 { @include pad(4, right); }
+.pad-right5 { @include pad(5, right); }
+.pad-right6 { @include pad(6, right); }
+
+.pad-bottom0 { @include pad(0, bottom); }
+.pad-bottom1 { @include pad(1, bottom); }
+.pad-bottom2 { @include pad(2, bottom); }
+.pad-bottom3 { @include pad(3, bottom); }
+.pad-bottom4 { @include pad(4, bottom); }
+.pad-bottom5 { @include pad(5, bottom); }
+.pad-bottom6 { @include pad(6, bottom); }
+
+.pad-left0 { @include pad(0, left); }
+.pad-left1 { @include pad(1, left); }
+.pad-left2 { @include pad(2, left); }
+.pad-left3 { @include pad(3, left); }
+.pad-left4 { @include pad(4, left); }
+.pad-left5 { @include pad(5, left); }
+.pad-left6 { @include pad(6, left); }
+
+.pad-y0 { @include pad(0, vertical); }
+.pad-y1 { @include pad(1, vertical); }
+.pad-y2 { @include pad(2, vertical); }
+.pad-y3 { @include pad(3, vertical); }
+.pad-y4 { @include pad(4, vertical); }
+.pad-y5 { @include pad(5, vertical); }
+.pad-y6 { @include pad(6, vertical); }
+
+.pad-x0 { @include pad(0, horizontal); }
+.pad-x1 { @include pad(1, horizontal); }
+.pad-x2 { @include pad(2, horizontal); }
+.pad-x3 { @include pad(3, horizontal); }
+.pad-x4 { @include pad(4, horizontal); }
+.pad-x5 { @include pad(5, horizontal); }
+.pad-x6 { @include pad(6, horizontal); }
+
+
+// Fill
+// -------------------------
+
+.fill-darker     { background-color: $neutral-darker; }
+.fill-dark       { background-color: $neutral-dark; }
+.fill-neutral    { background-color: $neutral; }
+.fill-light      { background-color: $neutral-light; }
+.fill-lighter    { background-color: $neutral-lighter; }
+
+.fill-grey       { background-color: #e9eaed; }
+
+.fill-blue       { background-color: $primary-blue; }
+.fill-green      { background-color: $primary-green; }
+.fill-orange     { background-color: $primary-orange; }
+
+
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}

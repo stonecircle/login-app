@@ -1,0 +1,31 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Form elements
+// -------------------------
+
+$input-bg:                          #fff !default;
+$input-color:                       $neutral-dark !default;
+$input-border:                      $neutral !default;
+$input-border-radius:               $border-radius-base !default;
+$input-border-focus:                $primary-blue !default;
+$input-color-placeholder:           $neutral !default;
+$input-weight-placeholder:          normal !default;
+
+$input-bg-disabled:                 $neutral-light !default;
+$input-color-disabled:              $neutral !default;
+$input-border-disabled:             $input-border !default;
+
+$input-height-base:                 ($line-height-computed + ($padding-base-vertical * 2) - .2) !default;
+$input-height-large:                (floor($font-size-base * $line-height-small) + ($padding-large-vertical * 2) + .3) !default;
+$input-height-small:                (floor($font-size-xs * $line-height-large) + ($padding-small-vertical * 2) + 1.1) !default;
+
+$legend-color:                      $grey-dark !default;
+$legend-border-color:               #e5e5e5 !default;
+
+$label-weight:                      500 !default;
+
+$input-group-addon-bg:              $grey-lighter !default;
+$input-group-addon-border-color:    $input-border !default;

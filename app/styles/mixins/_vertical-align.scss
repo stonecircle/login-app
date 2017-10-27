@@ -1,0 +1,15 @@
+// Vertical column alignment
+
+@mixin vertical-align($point: null) {
+  // Breakpoint to target is defined by mixin variable
+  @if ($point) {
+    @include at-least($point) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  @else {
+    display: flex;
+    align-items: center;
+  }
+}

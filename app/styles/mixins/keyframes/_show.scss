@@ -1,0 +1,16 @@
+//
+// Show keyframes
+// --------------------------------------------------
+
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: perspective(450px) translate(0, -30px) rotateX(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(450px) translate(0, 0) rotateX(0deg);
+  }
+}

@@ -1,0 +1,316 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: $btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  padding: 0;
+  border-radius: $border-radius-base;
+  border: 1px solid;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 100ms ease-out;
+
+  // Reapplying font anti-aliasing for input, button elements
+  // http://jameskoster.co.uk/work/using-webkit-font-smoothing-antialiased-check-your-buttons/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  // Set default size, theme for base button
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-small, $line-height-base);
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+
+  // Pop style buttons (3D effect)
+  &.pop {
+    border: none;
+    box-shadow: 0 1px rgba(#000,.08);
+    background-image: linear-gradient(rgba(#000,.14),rgba(#000,.34));
+
+    span {
+      background-image: linear-gradient(rgba(#fff,.12),rgba(#000,.1));
+      border-radius: $border-radius-base - .1;
+      display: block;
+    }
+
+    &:active,
+    &.active {
+      box-shadow: none;
+
+      span { box-shadow: inset 0 1px 3px rgba(#000,.24); }
+    }
+  }
+
+  // Hollow style buttons (transparent background)
+  &.hollow { border-width: 2px; }
+
+  &,
+  &:active,
+  &.active {
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $btn-default-color;
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    pointer-events: none; // Future-proof disabling of clicks
+    opacity: .65;
+    box-shadow: none;
+  }
+
+  // Horizontally space out multiple buttons
+  + .btn {
+    margin: {
+      top: 0;
+      left: .8rem;
+    }
+  }
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn.blue {
+  @include button-variant($btn-blue-color, $btn-blue-bg, $btn-blue-border);
+}
+.btn.green {
+  @include button-variant($btn-green-color, $btn-green-bg, $btn-green-border);
+}
+.btn.red {
+  @include button-variant($btn-red-color, $btn-red-bg, $btn-red-border);
+}
+.btn.orange {
+  @include button-variant($btn-orange-color, $btn-orange-bg, $btn-orange-border);
+}
+.btn.purple {
+  @include button-variant($btn-purple-color, $btn-purple-bg, $btn-purple-border);
+}
+.btn.white {
+  @include button-variant($btn-white-color, $btn-white-bg, $btn-white-border);
+}
+
+
+// Hollow buttons
+// -------------------------
+
+.btn.hollow {
+  @include button-hollow-variant($btn-default-border, $btn-default-color);
+}
+.btn.hollow.blue {
+  @include button-hollow-variant($btn-blue-bg);
+}
+.btn.hollow.green {
+  @include button-hollow-variant($btn-green-bg);
+}
+.btn.hollow.red {
+  @include button-hollow-variant($btn-red-bg);
+}
+.btn.hollow.orange {
+  @include button-hollow-variant($btn-orange-bg);
+}
+.btn.hollow.purple {
+  @include button-hollow-variant($btn-purple-bg);
+}
+.btn.hollow.white {
+  @include button-hollow-variant($btn-white-bg);
+}
+
+
+// 3D buttons
+// -------------------------
+
+.btn.pop {
+  @include button-pop-variant($btn-default-color, $btn-default-bg);
+}
+.btn.pop.blue {
+  @include button-pop-variant($btn-blue-color, $btn-blue-bg);
+}
+.btn.pop.green {
+  @include button-pop-variant($btn-green-color, $btn-green-bg);
+}
+.btn.pop.red {
+  @include button-pop-variant($btn-red-color, $btn-red-bg);
+}
+.btn.pop.orange {
+  @include button-pop-variant($btn-orange-color, $btn-orange-bg);
+}
+.btn.pop.purple {
+  @include button-pop-variant($btn-purple-color, $btn-purple-bg);
+}
+.btn.pop.white {
+  @include button-pop-variant($btn-white-color, $btn-white-bg);
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.btn.link {
+  color: $link-color;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: $btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// Button sizes
+// --------------------------------------------------
+
+.btn.large {
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-base, $line-height-large);
+}
+.btn.small {
+  @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-xs, $line-height-small);
+}
+
+
+// Button action presets
+// --------------------------------------------------
+
+// Position the icon to the left of content
+.btn.before:before {
+  @extend .fa;
+  @extend .left;
+}
+
+// Position the icon to the right of content
+.btn.after:after {
+  @extend .fa;
+  @extend .right;
+}
+
+// Confirm button
+//
+// Add a check icon, colour green
+
+.btn.confirm {
+  @extend .btn.before;
+  @extend .btn.green;
+
+  &:before {
+    @extend .fa-check;
+  }
+}
+
+// Add button
+//
+// Add a plus icon, colour blue
+
+.btn.add {
+  @extend .btn.before;
+  @extend .btn.blue;
+
+  &:before {
+    @extend .fa-plus;
+  }
+}
+
+// Delete button
+//
+// Add a trash icon, colour red
+
+.btn.delete {
+  @extend .btn.before;
+  @extend .btn.red;
+
+  &:before {
+    @extend .fa-trash;
+  }
+}
+
+// Previous & next buttons
+//
+// Add arrows to indicate navigation
+
+.btn.prev {
+  @extend .btn.before;
+
+  &:before {
+    @extend .fa-arrow-circle-left;
+  }
+}
+
+.btn.next {
+  // TODO: figure out why :after won't display icon on buttons
+  // @extend .btn.after;
+  @extend .btn.before;
+
+  &:before {
+    @extend .fa-arrow-circle-right;
+  }
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.btn.block {
+  display: block;
+  width: 100%;
+
+  // Vertically space out multiple block buttons
+  + .btn.block {
+    margin: {
+      top: .8rem;
+      left: 0;
+    }
+  }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn.block {
+    width: 100%;
+  }
+}
