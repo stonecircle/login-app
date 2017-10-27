@@ -1,8 +1,8 @@
 <div class="account col-sm-8 center-block text-center">
   <form class="spacing-bottom6">
     <p>Password reset successfully, you can now login to the application.</p>
-    {{#if content.authmaker.appDomain}}
-      <a class="btn pop blue" href="{{content.authmaker.appDomain}}"><span>Back to {{#if content.authmaker.app_name}} {{content.authmaker.app_name}} {{else}} the Application {{/if}}</span></a>
+    {{#if model.authmaker.appDomain}}
+      <a class="btn pop blue" href="{{content.authmaker.appDomain}}"><span>Back to {{#if model.authmaker.app_name}} {{model.authmaker.app_name}} {{else}} the Application {{/if}}</span></a>
     {{/if}}
   </form>
 </div>

@@ -1,0 +1,105 @@
+//
+// Colours
+// --------------------------------------------------
+
+
+// Greys
+$grey-darker:                       lighten(#000, 13.5%) !default; // #222
+$grey-dark:                         lighten(#000, 26.5%) !default; // #444
+$grey:                              lighten(#000, 33.5%) !default; // #555
+$grey-light:                        lighten(#000, 60%) !default;   // #999
+$grey-lighter:                      lighten(#000, 93.5%) !default; // #eee
+
+// Neutral
+$neutral-darker:                    #273a45 !default;
+$neutral-dark:                      #546673 !default;
+$neutral:                           #c2c9d4 !default;
+$neutral-light:                     #e9eaed !default;
+$neutral-lighter:                   #fafcfc !default;
+
+
+// Primary
+// -------------------------
+
+// Blue
+$primary-blue:                      #3ea2ff !default;
+$primary-blue-dark:                 darken(desaturate($primary-blue, 5), 15) !default;  // #0680ea
+$primary-blue-light:                lighten(desaturate($primary-blue, 5), 15) !default; //
+
+// Green
+$primary-green:                     #64ce83 !default;
+$primary-green-dark:                darken(desaturate($primary-green, 5), 15) !default; // #3da95b
+$primary-green-light:               lighten(desaturate($primary-green, 5), 15) !default; //
+
+// Red
+$primary-red:                       #e74c3c !default;
+$primary-red-dark:                  darken(desaturate($primary-red, 5), 15) !default;  // #ba271d
+$primary-red-light:                 lighten(desaturate($primary-red, 5), 15) !default; //
+
+// Orange
+$primary-orange:                    #ff7f48 !default;
+$primary-orange-dark:               darken(desaturate($primary-orange, 5), 15) !default;  // #f44a06
+$primary-orange-light:              lighten(desaturate($primary-orange, 5), 15) !default; //
+
+// Purple
+$primary-purple:                    #8e44ad !default;
+$primary-purple-dark:               darken(desaturate($primary-purple, 5), 15) !default;  // #5f3372
+$primary-purple-light:              lighten(desaturate($primary-purple, 5), 15) !default; //
+
+
+// Data
+// -------------------------
+
+// Grey
+$data-grey:                         #727272 !default;
+$data-grey-dark:                    #010101 !default;
+$data-grey-light:                   #cccccc !default;
+
+// Blue
+$data-blue:                         $primary-blue !default;
+$data-blue-dark:                    $primary-blue-dark !default;
+$data-blue-light:                   $primary-blue-light !default;
+
+// Green
+$data-green:                        $primary-green !default;
+$data-green-dark:                   $primary-green-dark !default;
+$data-green-light:                  $primary-green-light !default;
+
+// Red
+$data-red:                          $primary-red !default;
+$data-red-dark:                     $primary-red-dark !default;
+$data-red-light:                    $primary-red-light !default;
+
+// Orange
+$data-orange:                       $primary-orange !default;
+$data-orange-dark:                  $primary-orange-dark !default;
+$data-orange-light:                 $primary-orange-light !default;
+
+// Purple
+$data-purple:                       $primary-purple !default;
+$data-purple-dark:                  $primary-purple-dark !default;
+$data-purple-light:                 $primary-purple-light !default;
+
+
+// States
+// -------------------------
+
+// Success (green)
+$state-success-text:                $primary-green-dark !default;
+$state-success-bg:                  $primary-green !default;
+$state-success-border:              $primary-green-dark !default;
+
+// Neutral (blue)
+$state-info-text:                   $primary-blue-dark !default;
+$state-info-bg:                     $primary-blue !default;
+$state-info-border:                 $primary-blue-dark !default;
+
+// Warning (orange)
+$state-warning-text:                $primary-orange-dark !default;
+$state-warning-bg:                  $primary-orange !default;
+$state-warning-border:              $primary-orange-dark !default;
+
+// Error (red)
+$state-error-text:                  $primary-red-dark !default;
+$state-error-bg:                    $primary-red !default;
+$state-error-border:                $primary-red-dark !default;

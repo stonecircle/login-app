@@ -1,0 +1,45 @@
+// Pad mixin
+
+@mixin pad($size, $direction: null, $point: null) {
+  @if $direction == horizontal {
+    padding: {
+      right: #{$size}rem;
+      left: #{$size}rem;
+    }
+    @if ($point) {
+      @include at-least($point) {
+        padding: {
+          right: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  @else if $direction == vertical {
+    padding: {
+      top: #{$size}rem;
+      bottom: #{$size}rem;
+    }
+    @if ($point) {
+      @include at-least($point) {
+        padding: {
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+  @else if ($direction) {
+    padding-#{$direction}: #{$size}rem;
+
+    // Breakpoint to target is defined by mixin variable
+    @if ($point) {
+      @include at-least($point) {
+        padding-#{$direction}: 0;
+      }
+    }
+  }
+  @else {
+    padding: #{$size}rem;
+  }
+}

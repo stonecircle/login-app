@@ -1,12 +1,6 @@
 <div class="account col-sm-8 center-block">
   <form class="spacing-bottom6">
-    <div class="form-group has-feedback {{if errors.email.length 'has-error'}} {{unless email.length 'empty'}}">
-      <label class="sr-only" for="email">{{t 'label.email'}}</label>
-      {{input class="input-primary form-control large" type="email" name="email" value=email placeholder="Email"}}
-      <span class="form-control-feedback {{unless email.length 'hide'}}">
-        <i class="fa {{if errors.email.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
+    {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='Email' name="email" id="email" type='email'}}
     <button id="button-primary" class="btn pop blue block" {{action 'resetPassword'}}><span>{{t 'button.reset'}}</span></button>
   </form>
 </div>

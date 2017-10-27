@@ -1,0 +1,217 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base nav
+// --------------------------------------------------
+
+.nav {
+  @include clearfix();
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    position: relative;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: $nav-link-padding;
+      transition: all 150ms ease;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+// Inline
+// -------------------------
+
+.nav-inline {
+  @extend .nav;
+
+  > li {
+    float: left;
+
+    + li { margin-left: 1.4rem; }
+  }
+}
+
+
+// Tabs
+// -------------------------
+
+.nav-tabs {
+  @extend .nav;
+
+  > li {
+    float: left;
+    background: $nav-tabs-background-color;
+    border-bottom: 1px solid $nav-tabs-border-color;
+    color: $nav-tabs-link-color;
+
+    > a,
+    > span {
+      display: block;
+      padding: $nav-tabs-padding;
+      color: $nav-tabs-link-color;
+      font: {
+        weight: bold;
+        size: $font-size-base;
+      }
+    }
+
+    a:hover,
+    a:focus { color: $nav-tabs-hover-link-color; }
+
+    &.complete {
+      > a,
+      > span, {
+        color: $primary-green;
+      }
+    }
+
+    &.active {
+      background-color: #fff;
+
+      > a,
+      > span {
+        color: $nav-tabs-active-link-color;
+
+        &:hover { color: $nav-tabs-active-link-color; }
+      }
+
+      @include at-least($beta) {
+        border: {
+          width: 0 1px 0;
+          style: solid;
+          color: $nav-tabs-border-color;
+          bottom-color: transparent;
+        }
+      }
+    }
+
+    @include at-least($beta) {
+      margin-bottom: -1px;
+
+      &:first-child {
+        border-top-left-radius: $border-radius-base;
+
+        &.active { border-left: none; }
+      }
+
+      &:last-child {
+        border-top-right-radius: $border-radius-base;
+
+        &.active { border-right: none; }
+      }
+    }
+  }
+}
+
+
+// Pills
+// -------------------------
+
+.nav-pills {
+
+  > li {
+    float: left;
+
+    > a {
+      color: $nav-pills-link-color;
+
+      &:hover,
+      &:focus { color: $nav-pills-link-hover-color; }
+
+      &.active {
+        background-color: $nav-pills-active-link-bg;
+        color: $nav-pills-active-link-color;
+      }
+    }
+
+    + li { margin-left: 1.2rem; }
+  }
+}
+
+
+// Stacked
+// -------------------------
+
+.nav-stacked {
+  @extend .nav;
+
+  > li {
+    float: none;
+
+    + li {
+      margin-top: .6rem;
+      margin-left: 0;
+    }
+  }
+}
+
+
+// Nav sizing
+// --------------------------------------------------
+
+.nav.small {
+  @include nav-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $border-radius-small);
+}
+
+.nav.large {
+  @include nav-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $border-radius-small);
+}
+
+.nav.xlarge {
+  li > a { padding: $nav-link-padding-xlarge; }
+}
+
+
+// Variations
+// --------------------------------------------------
+
+
+// Justified nav (100%)
+// -------------------------
+
+.nav-justified {
+  width: 100%;
+
+  > li {
+    float: none;
+
+    > a {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    + li { margin-left: 0; }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
+  @include at-most($beta) {
+    > li:first-child { @include border-top-radius($border-radius-base); }
+  }
+
+  @include at-least($beta) {
+    > li {
+      display: table-cell;
+      width: 1%;
+
+      > a { margin-bottom: 0; }
+    }
+  }
+}

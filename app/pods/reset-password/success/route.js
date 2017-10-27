@@ -1,8 +1,10 @@
-import Ember from 'ember';
-import TransitionAction from 'authmaker-login-app/mixins/transition-action';
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 
-export default Ember.Route.extend(TransitionAction, {
-    model(){
-        return Ember.$.getJSON("/api/settings");
-    }
+export default Route.extend({
+  ajax: service(),
+  model() {
+    return get(this, 'ajax').request("/api/settings");
+  }
 });

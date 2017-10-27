@@ -1,0 +1,8 @@
+@mixin nav-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+  font-size: $font-size;
+
+  > li > a {
+    border-radius: $border-radius;
+    padding: $padding-vertical $padding-horizontal;
+  }
+}

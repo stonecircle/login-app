@@ -1,0 +1,17 @@
+// Spacing mixin
+
+@mixin spacing($size, $direction: null, $point: null) {
+  @if ($direction) {
+    margin-#{$direction}: #{$size}rem;
+
+    // Breakpoint to target is defined by mixin variable
+    @if ($point) {
+      @include at-least($point) {
+        margin-#{$direction}: 0;
+      }
+    }
+  }
+  @else {
+    margin: #{$size}rem;
+  }
+}

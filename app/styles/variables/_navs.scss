@@ -1,0 +1,46 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Default nav
+// -------------------------
+
+$nav-link-padding:                                .8rem 1.2rem !default;
+$nav-link-padding-large:                          1.6rem 1.4rem !default;
+$nav-link-padding-xlarge:                         2.2rem 1.6rem !default;
+
+$nav-link-color:                                  $neutral-dark !default;
+$nav-link-hover-color:                            $primary-green !default;
+$nav-active-link-color:                           $primary-green !default;
+$nav-inactive-link-color:                         $neutral !default;
+$nav-disabled-link-color:                         $grey-light !default;
+$nav-disabled-link-hover-color:                   $grey-light !default;
+$nav-open-link-hover-color:                       #fff !default;
+$nav-open-caret-border-color:                     #fff !default;
+
+// Tabs
+$nav-tabs-padding:                                1.8rem 0 !default;
+
+$nav-tabs-link-color:                             $neutral !default;
+$nav-tabs-background-color:                       #fafbfb !default;
+$nav-tabs-hover-link-color:                       $neutral-dark !default;
+$nav-tabs-active-link-color:                      $primary-blue !default;
+$nav-tabs-active-background-color:                #fff !default;
+$nav-tabs-border-color:                           #dfe0e4 !default;
+$nav-tabs-justified-active-link-border-color:     #fff !default;
+
+// Pills
+$nav-pills-link-color:                            $neutral !default;
+$nav-pills-link-hover-color:                      $neutral-dark !default;
+$nav-pills-active-link-bg:                        $primary-blue !default;
+$nav-pills-active-link-color:                     #fff !default;
+
+
+// Navbar
+// -------------------------
+
+// Default
+$navbar-height:                                   5rem !default;
+$navbar-padding-horizontal:                       3rem !default;
+$navbar-padding-vertical:                         1.42rem !default;

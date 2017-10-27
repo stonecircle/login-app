@@ -6,13 +6,12 @@
 // Global (uiframework)
 // -------------------------
 
-@import "normalize";
 @import "variables";
 @import "mixins";
 @import "components";
-@import "scaffolding";
 @import "helpers";
-
+@import "normalize";
+@import "scaffolding";
 
 // App partials
 // -------------------------
@@ -37,4 +36,8 @@
 
 .route-messaging {
   display: none;
+}
+
+.login-icon {
+  width: 15px;
 }

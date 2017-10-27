@@ -12,7 +12,6 @@ Router.map(function() {
   this.route('authorize');
   this.route('signup');
   this.route('download');
-  this.route('resend-confirmation');
   this.route('reset-password', function(){
       this.route('confirm');
       this.route('success');

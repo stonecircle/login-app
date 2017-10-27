@@ -1,0 +1,15 @@
+// Responsive visibility
+
+@mixin show($point) {
+  display: none;
+  @include at-least($point) {
+    display: block;
+  }
+}
+
+@mixin hide($point) {
+  display: inherit;
+  @include at-least($point) {
+    display: none;
+  }
+}

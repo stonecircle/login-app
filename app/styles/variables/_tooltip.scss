@@ -1,0 +1,23 @@
+//
+// Tooltip variables
+// --------------------------------------------------
+
+
+// Units
+// --------------------------------------------------
+
+// Arrow size
+$tooltip-arrow-base:                       4px !default;
+$tooltip-arrow-large:                      6px !default;
+
+// Tooltip height
+$tooltip-height-base:                      25px !default; // $font-size-small + 2 * $padding-base-vertical
+$tooltip-height-large:                     37px !default; // $font-size-large + 2 * $padding-large-vertical
+
+
+// Themes
+// --------------------------------------------------
+
+// Default
+$tooltip-default-color:                    #fff !default;
+$tooltip-default-bg:                       rgba(#000,.75) !default;

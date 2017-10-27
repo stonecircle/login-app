@@ -20,23 +20,8 @@
     </div>
   {{/if}}
   <form class="spacing-bottom6">
-    <div class="form-group has-feedback {{if errors.email.length 'has-error' 'has-success'}} {{if email.length '' 'empty'}}">
-      <label for="email">{{t 'label.email'}}</label>
-      {{input class="input-primary form-control large" type="email" name="email" value=email placeholder="your@email.address"}}
-      <span class="form-control-feedback {{unless email.length 'hide'}}">
-        <i class="fa {{if errors.email.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
-    <div class="form-group form-group--relative has-feedback {{if errors.password.length 'has-error' 'has-success'}} {{unless password.length 'empty'}}">
-      <label for="password">{{t 'label.password'}}</label>
-      {{input class="input-primary form-control large" type="password" name="password" value=password placeholder="supsersecretgremlin"}}
-      <div class="text-right spacing-top1">
-        {{#link-to 'reset-password' class="form-group__input-link"}}{{t "signIn.label.forgot"}}{{/link-to}}
-      </div>
-      <span class="form-control-feedback {{unless password.length 'hide'}}">
-        <i class="fa {{if errors.password.length 'fa-close' 'fa-check'}}"></i>
-      </span>
-    </div>
+    {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='your@email.address' name="email" id="email" type='email'}}
+    {{validated-input labelKey='label.password' value=password hasError=(not validations.attrs.password.isTruelyValid) placeholder='supsersecretgremlin' name="password" id="password" type='password'}}
     <div>
       <button id="button-primary" class="btn pop blue large spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
     </div>

@@ -1,8 +1,7 @@
-<div class="c-notification__container">
-  {{#each notifications as |notification|}}
-    {{notification-message notification=notification}}
-  {{/each}}
-</div>
+{{notification-container}}
+
+{{title (t (concat 'titles.' router.currentRouteName))}}
+
 <div class="container">
   <div class="main spacing-bottom4">
     <header class="auth-header text-center pad-y3">

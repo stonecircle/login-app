@@ -1,0 +1,125 @@
+//
+// Tooltip
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+.tooltip {
+	@include tooltip-size($padding-base-vertical, $padding-base-horizontal, $tooltip-height-base, $font-size-small, $border-radius-small, $tooltip-arrow-base);
+	@include tooltip-variant($tooltip-default-bg, $tooltip-default-color);
+	position: relative;
+	display: inline-block;
+
+	&:before, &:after {
+		position: absolute;
+		transform: translate3d(0, 0, 0);
+		visibility: hidden;
+		opacity: 0;
+		z-index: $zindex-tooltip;
+		pointer-events: none;
+		transition-delay: 0;
+	}
+
+	&:hover:before, &:hover:after,
+	&:focus:before, &:focus:after {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	// Tooltip arrow
+	&:before {
+		content: '';
+		position: absolute;
+		background: transparent;
+		border: {
+			style: solid;
+			color: transparent;
+		}
+		z-index: $zindex-tooltip + 1;
+	}
+
+	// Tooltip body
+	&:after {
+		content: attr(data-tooltip);
+		white-space: nowrap;
+		font-weight: bold;
+	}
+}
+
+
+// Tooltip effects
+// --------------------------------------------------
+
+.tooltip.fade {
+	&:before,
+	&:after {
+		transition: 200ms ease-in-out;
+	}
+
+	&:hover { transition-delay: 100ms; }
+}
+
+
+// Tooltip positioning
+// --------------------------------------------------
+
+.tooltip.top {
+	@include vertical-positioned-tooltip('bottom', -1, $tooltip-arrow-base);
+
+	&.large { @include vertical-positioned-tooltip('bottom', -1, $tooltip-arrow-large); }
+}
+
+.tooltip.bottom {
+	@include vertical-positioned-tooltip('top', 1, $tooltip-arrow-base);
+
+	&.large { @include vertical-positioned-tooltip('top', 1, $tooltip-arrow-large); }
+}
+
+.tooltip.right {
+	@include horizontal-positioned-tooltip('left', 1, $tooltip-arrow-base, $tooltip-height-base);
+
+	&.large { @include horizontal-positioned-tooltip('left', 1, $tooltip-arrow-large, $tooltip-height-large); }
+}
+
+.tooltip.left {
+	@include horizontal-positioned-tooltip('right', -1, $tooltip-arrow-base, $tooltip-height-base);
+
+	&.large { @include horizontal-positioned-tooltip('right', -1, $tooltip-arrow-large, $tooltip-height-large); }
+}
+
+
+// Always visible
+// --------------------------------------------------
+
+.tooltip.always {
+	&:after, &:before {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&.top {
+		@include set-margin('translateY', -1);
+	}
+
+	&.bottom {
+		@include set-margin('translateY', 1);
+	}
+
+	&.left {
+		@include set-margin('translateX', -1);
+	}
+
+	&.right {
+		@include set-margin('translateX', 1);
+	}
+}
+
+
+// Tooltip sizes
+// --------------------------------------------------
+
+.tooltip.large {
+	@include tooltip-size($padding-large-vertical, $padding-large-horizontal, $tooltip-height-large, $font-size-large, $border-radius-large, $tooltip-arrow-large);
+}

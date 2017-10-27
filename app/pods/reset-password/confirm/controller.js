@@ -1,65 +1,54 @@
-import Ember from 'ember';
-import EmberValidations from 'ember-validations';
+import { get } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Controller, { inject as controller } from '@ember/controller';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Ember.Controller.extend(EmberValidations, {
+const Validations = buildValidations({
+  password: validator('presence', {
+    presence: true,
+  }),
 
-    applicationController: Ember.inject.controller('application'),
-    queryParams: ['email', 'code'],
+  passwordConfirmation: validator('confirmation', {
+    on: 'password',
+    message: 'Passwords do not match'
+  }),
+});
 
-    email: '',
-    code: '',
+export default Controller.extend(Validations, {
+  notifications: service('notification-messages'),
+  ajax: service(),
 
-    validations: {
-        password: {
-            presence: true,
-            confirmation: true
+  applicationController: controller('application'),
+  queryParams: ['email', 'code'],
+
+  email: '',
+  code: '',
+
+  actions: {
+    resetPassword() {
+      get(this, 'notifications').clearAll()
+
+      if (!get(this, 'validations.isValid')) {
+        const firstError = get(this, 'validations.errors.0');
+        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+      }
+
+      return get(this, 'ajax').post('/api/password/reset', {
+        dataType: 'text',
+        data: {
+          email: this.get('email'),
+          resetCode: this.get('code'),
+          password: this.get('password'),
+          passwordConfirmation: this.get('passwordConfirmation'),
+          redirect_uri: this.get('applicationController.redirect_uri'),
+          client_id: this.get('applicationController.client_id')
         }
-    },
-
-    actions: {
-        resetPassword(){
-            this.notifications.set('content', Ember.A());
-
-            return this.validate().then(() => {
-                return Ember.$.post('/api/password/reset', {
-                        email: this.get('email'),
-                        resetCode: this.get('code'),
-                        password: this.get('password'),
-                        passwordConfirmation: this.get('passwordConfirmation'),
-                        redirect_uri: this.get('applicationController.redirect_uri'),
-                        client_id: this.get('applicationController.client_id')
-                    });
-            })
-            .then(() => {
-                this.transitionToRoute('reset-password.success');
-            })
-            .catch((err) => {
-                var keys = Ember.keys(err);
-                var erroredYet = false;
-
-                if(this.get('isInvalid')){
-                    // For each validation error
-                    keys.forEach((key) => {
-                        if(!erroredYet && err.get(key + '.length')) {
-                            err.get(key).forEach((errorMessage) => {
-
-                                erroredYet = true;
-
-                                this.notifications.addNotification({
-                                    message:  errorMessage,
-                                    type: 'error'
-                                });
-                            });
-                        }
-                    });
-                } else {
-
-                    this.notifications.addNotification({
-                        message:  "Error updating password: " + (err.message || err.responseText),
-                        type: 'error'
-                    });
-                }
-            });
-        }
+      }).then(() => {
+        this.transitionToRoute('reset-password.success');
+      })
+      .catch((err) => {
+        get(this, 'notifications').error(`Error updating password: ${err.payload}`);
+      });
     }
+  }
 });

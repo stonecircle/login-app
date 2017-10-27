@@ -1,0 +1,56 @@
+//
+// Grid
+// --------------------------------------------------
+
+
+// Media query breakpoints
+//
+// Define the breakpoints at which your layout will change, adapting to different screen sizes
+
+// Extra small screen / phone
+$alpha:                      568px !default;
+
+// Small screen / tablet
+$beta:                       768px !default;
+
+// Medium screen / desktop
+$delta:                      992px !default;
+
+// Large screen / wide desktop
+$gamma:                      1200px !default;
+
+// So media queries don't overlap when required, provide a maximum
+$alpha-max:                  ($beta - 1) !default;
+$beta-max:                   ($delta - 1) !default;
+$delta-max:                  ($gamma - 1) !default;
+
+
+// Grid system
+//
+// Define your custom responsive grid
+
+// Number of columns in the grid
+$grid-columns:              12 !default;
+
+// Padding between columns. Gets divided in half for the left and right
+$grid-gutter-width:         30px !default;
+
+// Point at which the navbar becomes uncollapsed
+$grid-float-breakpoint:     $beta !default;
+
+// Point at which the navbar begins collapsing
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+
+// Container sizes
+//
+// Define the maximum width of `.container` for different screen sizes
+
+// Small screen / tablet
+$container-beta:               ((720px + $grid-gutter-width)) !default;
+
+// Medium screen / desktop
+$container-delta:              ((940px + $grid-gutter-width)) !default;
+
+// Large screen / wide desktop
+$container-gamma:              ((1140px + $grid-gutter-width)) !default;

@@ -1,0 +1,21 @@
+//
+// Alert mixins
+// --------------------------------------------------
+
+
+// Theme
+// -------------------------
+
+@mixin alert-theme($background, $border, $text-color) {
+  background-color: rgba($background, .2);
+  border-color: rgba($border, .2);
+  color: $text-color;
+
+  hr { border-top-color: darken($border, 5%); }
+
+  a,
+  .alert-link,
+  .section-action {
+    color: darken($text-color, 5%);
+  }
+}
