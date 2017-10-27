@@ -6,6 +6,11 @@ public/
 tests/
 vendor/
 tmp/
-bower.json
-testem.json
-Brocfile.js
+
+.editorconfig
+.ember-cli
+.eslintrc.js
+.travis.yml
+.watchmanconfig
+ember-cli-build.js
+testem.js
