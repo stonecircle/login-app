@@ -8,7 +8,8 @@ export default Ember.Mixin.create({
   socialLogins: Ember.computed.alias('application.model.socialLogins'),
 
   shownSocialLogins: Ember.computed('socialLogins.[]', 'logins.[]', function() {
-    return this.get('socialLogins').filter((login) => {
+    const socialLogins = this.get('socialLogins') || [];
+    return socialLogins.filter((login) => {
       return (this.get('logins') ? this.get('logins').split(',') : []).find(function(allow) {
         return login === allow;
       });
