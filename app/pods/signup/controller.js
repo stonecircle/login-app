@@ -2,7 +2,6 @@ import Ember from 'ember';
 import SocialLogins from 'authmaker-login-app/mixins/social-logins';
 
 import { get, computed } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
 
