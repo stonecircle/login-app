@@ -1,6 +1,6 @@
 {
   "name": "authmaker-login-app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Login app for AuthMaker",
   "license": "MIT",
   "author": "Chris Manson <chris@stonecircle.io>",
