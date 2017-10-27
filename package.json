@@ -12,7 +12,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "prepublishOnly": "rm -rf dist && npm run build -- --environment=production"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
