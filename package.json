@@ -1,5 +1,5 @@
 {
-  "name": "authmaker-login-app",
+  "name": "@authmaker/login-app",
   "version": "2.0.2",
   "description": "Login app for AuthMaker",
   "license": "MIT",
