@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import config from 'authmaker-login-app/config/environment';
+import config from '@authmaker/login-app/config/environment';
 
 import { inject as service } from '@ember/service';
 

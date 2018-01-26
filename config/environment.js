@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'authmaker-login-app',
-    podModulePrefix: 'authmaker-login-app/pods',
+    modulePrefix: '@authmaker/login-app',
+    podModulePrefix: '@authmaker/login-app/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -38,6 +38,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     // ENV.apiUrl = 'http://localhost:5000'
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'test') {

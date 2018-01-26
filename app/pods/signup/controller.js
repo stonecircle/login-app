@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import SocialLogins from 'authmaker-login-app/mixins/social-logins';
+import SocialLogins from '@authmaker/login-app/mixins/social-logins';
 
 import { get, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
