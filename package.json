@@ -36,7 +36,7 @@
     "ember-cp-validations": "^3.5.0",
     "ember-data": "~2.18.0",
     "ember-export-application-global": "^2.0.0",
-    "ember-font-awesome": "^4.0.0-alpha.13",
+    "ember-font-awesome": "^4.0.0-rc.2",
     "ember-i18n": "^5.0.2",
     "ember-load-initializers": "^1.0.0",
     "ember-page-title": "^3.2.2",
