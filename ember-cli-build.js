@@ -12,7 +12,8 @@ module.exports = function(defaults) {
       rootvalue: "10px"
     },
     'ember-font-awesome': {
-      includeFontFiles: false
+      useScss: true, // for ember-cli-sass
+      includeFontFiles: false,
     }
   });
 
