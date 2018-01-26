@@ -1,14 +1,14 @@
 {
   "name": "@authmaker/login-app",
   "version": "2.0.2",
-  "description": "Login app for AuthMaker",
+  "description": "Login app for Authmaker",
   "license": "MIT",
   "author": "Chris Manson <chris@stonecircle.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/Authmaker/authmaker-login-app",
+  "repository": "https://github.com/Authmaker/login-app",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
