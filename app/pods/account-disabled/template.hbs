@@ -4,8 +4,12 @@
 <div class="account col-sm-8 center-block">
   <div class="frame">
     <div class="pad2 text-center">
-      <h4>{{t 'accountDisabled.header'}}</h4>
-      <p>{{t 'accountDisabled.message'}}</p>
+      {{#if options.isAuthmakerApp}}
+        {{authmaker-signup-message options=options}}
+      {{else}}
+        <h4>{{t 'accountDisabled.header'}}</h4>
+        <p>{{t 'accountDisabled.message'}}</p>
+      {{/if}}
     </div>
   </div>
   <div class="pad2 text-center">

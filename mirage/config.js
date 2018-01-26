@@ -111,6 +111,11 @@ export default function() {
         "header": "To activate your account please click the link in the email you received after sign up.",
         "message": "If you have not yet received your confirmation mail please sit tight, it can take some time."
       },
+      "authmakerAccountDisabled": {
+        "title": "Your Authmaker account has not been activated",
+        "header": "Thanks for signing up to Authmaker! You are now on the waiting list to become an Authmaker pioneer.",
+        "message": "While we're in beta, all new accounts are reviewed before activation. You will receive a confirmation email with a link to activate your account once you've been accepted."
+      },
       "confirmPassword": {
         "error": {
           "title": "There has been an error"
@@ -154,6 +159,15 @@ export default function() {
   })
 
   this.get('/settings/login', () => {
-    return {"loginLink": "https://app.authmaker.com/login"}
+    return {
+      "loginLink": "https://app.authmaker.com/login",
+      "askName": true,
+      "emailSubscribe": true,
+      "isAuthmakerApp": true,
+      "showFormLink": true,
+      "formMessage": "Psst! Skip to the front of the line and get approved sooner by completing your application with a simple questionnaire at the link below ",
+      "formLink": "https://stonecircle.typeform.com/to/uBQ6G4",
+      "formLinkText": "Complete My Application"
+    }
   })
 }
