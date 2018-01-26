@@ -22,3 +22,7 @@ before_install:
   - npm install -g npm@latest
   - npm -v
   - npm config set spin false
+
+script:
+  - npm run lint:js
+  - npm test
