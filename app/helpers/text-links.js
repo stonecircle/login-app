@@ -1,15 +1,16 @@
-import Ember from 'ember';
+import { helper } from "@ember/component/helper";
+import { w, htmlSafe } from "@ember/string";
 
-export default Ember.Helper.helper(function(params) {
+export default helper(function(params) {
   let inputText = params[0];
 
   //split it into words
-  var words = Ember.String.w(inputText.string || inputText).map(function(word){
+  var words = w(inputText.string || inputText).map(function(word){
       if(/^http[s]+:\/\//.test(word)){
           return `<a href="${word}" target="_blank">${word}</a>`;
       }
       return word;
   });
 
-  return Ember.String.htmlSafe(words.join(" "));
+  return htmlSafe(words.join(" "));
 });
