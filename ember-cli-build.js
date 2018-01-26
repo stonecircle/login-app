@@ -10,6 +10,9 @@ module.exports = function(defaults) {
     },
     pixrem: {
       rootvalue: "10px"
+    },
+    'ember-font-awesome': {
+      includeFontFiles: false
     }
   });
 
