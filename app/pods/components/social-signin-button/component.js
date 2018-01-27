@@ -15,7 +15,7 @@ export default Component.extend({
 
   actions: {
     socialLogin(login) {
-      this.sendAction('socialLogin', login);
+      this.get('socialLogin')(login);
     }
   }
 });
