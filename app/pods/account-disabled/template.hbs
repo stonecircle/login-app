@@ -4,11 +4,11 @@
 <div class="account col-sm-8 center-block">
   <div class="frame">
     <div class="pad2 text-center">
-      {{#if options.isAuthmakerApp}}
-        {{authmaker-signup-message options=options}}
-      {{else}}
-        <h4>{{t 'accountDisabled.header'}}</h4>
-        <p>{{t 'accountDisabled.message'}}</p>
+      <h4>{{t 'accountDisabled.header'}}</h4>
+      <p>{{t 'accountDisabled.message'}}</p>
+      {{#if options.formLink}}
+        <p>{{t 'accountDisabled.form.message'}}</p>
+        <a href={{options.formLink}} class="btn pop blue"><span>{{t 'accountDisabled.form.linkText'}}</span></a>
       {{/if}}
     </div>
   </div>
