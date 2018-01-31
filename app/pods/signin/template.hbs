@@ -6,7 +6,7 @@
     <div class="spacing-bottom4">
       <div class="text-center spacing-bottom2">
         {{#each shownSocialLogins as |login|}}
-          {{social-signin-button login=login title=(t "button.social.signIn" network=login) socialLogin=(action "socialLogin")}}
+          {{social-signin-button login=login title=(t "button.social.signIn" network=login) socialLogin="socialLogin"}}
         {{/each}}
       </div>
       {{#if termsLink}}
