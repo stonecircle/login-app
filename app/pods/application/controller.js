@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import config from '@authmaker/login-app/config/environment';
 
 import { inject as service } from '@ember/service';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   i18n: service(),
   router: service(),
 

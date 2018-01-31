@@ -1,9 +1,9 @@
 ---
 language: node_js
 node_js:
-  - "6"
+  - 8
 
-sudo: false
+sudo: true
 dist: trusty
 
 addons:
@@ -12,6 +12,10 @@ addons:
 cache:
   directories:
     - $HOME/.npm
+
+branches:
+  only:
+    - master
 
 env:
   global:

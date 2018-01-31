@@ -10,6 +10,10 @@ module.exports = function(defaults) {
     },
     pixrem: {
       rootvalue: "10px"
+    },
+    'ember-font-awesome': {
+      useScss: true, // for ember-cli-sass
+      includeFontFiles: false,
     }
   });
 

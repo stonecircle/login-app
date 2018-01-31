@@ -1,5 +1,4 @@
-import Ember from 'ember';
-
+import Controller, { inject as controller } from '@ember/controller';
 import { get } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
@@ -10,11 +9,11 @@ const Validations = buildValidations({
   }),
 });
 
-export default Ember.Controller.extend(Validations, {
+export default Controller.extend(Validations, {
   ajax: service(),
   notifications: service('notification-messages'),
 
-  applicationController: Ember.inject.controller('application'),
+  applicationController: controller('application'),
 
   actions: {
     resetPassword() {

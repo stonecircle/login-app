@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import SocialLogins from '@authmaker/login-app/mixins/social-logins';
 
 import { get } from '@ember/object';
@@ -14,7 +14,7 @@ const Validations = buildValidations({
   }),
 });
 
-export default Ember.Controller.extend(Validations, SocialLogins, {
+export default Controller.extend(Validations, SocialLogins, {
   ajax: service(),
   notifications: service('notification-messages'),
 
