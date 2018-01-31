@@ -15,7 +15,9 @@ export default Component.extend({
 
   actions: {
     socialLogin(login) {
-      this.get('socialLogin')(login);
+      // TODO remove the need for bubbling here
+      // eslint-disable-next-line ember/closure-actions
+      this.sendAction('socialLogin', login);
     }
   }
 });
