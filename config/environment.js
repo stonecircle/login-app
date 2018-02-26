@@ -28,7 +28,8 @@ module.exports = function(environment) {
     },
     'ember-cli-notifications': {
       includeFontAwesome: true
-    }
+    },
+    apiNamespace: 'v1',
   };
 
   if (environment === 'development') {
@@ -37,7 +38,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    // ENV.apiUrl = 'http://localhost:5000'
+    // ENV.apiHost = 'http://localhost:5000'
 
     ENV['ember-cli-mirage'] = {
       enabled: true

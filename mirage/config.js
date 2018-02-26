@@ -1,4 +1,11 @@
+import ENV from '@authmaker/login-app/config/environment';
+
 export default function() {
+  // properly namespaces urls
+  this.urlPrefix = `${ENV.apiHost}/${ENV.apiNamespace}`;
+  this.passthrough();
+
+  this.urlPrefix = `${ENV.apiHost}/`;
 
   // These comments are here to help you get started. Feel free to delete them.
 
@@ -164,5 +171,7 @@ export default function() {
       "emailSubscribe": true,
       "formLink": "https://stonecircle.typeform.com/to/uBQ6G4"
     }
-  })
+  });
+
+  this.passthrough();
 }
