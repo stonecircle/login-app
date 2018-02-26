@@ -3,6 +3,8 @@ import { get } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
 
+import ENV from '@authmaker/login-app/config/environment';
+
 const Validations = buildValidations({
   email: validator('format', {
     type: 'email'
@@ -24,12 +26,12 @@ export default Controller.extend(Validations, {
         return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
       }
 
-      return get(this, 'ajax').post('/api/password/requestReset', {
+      return get(this, 'ajax').post(`${ENV.apiHost || ''}/v1/password/requestReset`, {
         dataType: 'text',
         data: {
           email: this.get('email'),
-          redirect_uri: this.get('applicationController.redirect_uri'),
-          client_id: this.get('applicationController.client_id')
+          redirectUri: this.get('applicationController.redirect_uri'),
+          clientId: this.get('applicationController.client_id')
         },
       })
       .then(() => {

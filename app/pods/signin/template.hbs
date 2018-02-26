@@ -22,8 +22,10 @@
   <form class="spacing-bottom6">
     {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='your@email.address' name="email" id="email" type='email'}}
     {{validated-input labelKey='label.password' value=password hasError=(not validations.attrs.password.isTruelyValid) placeholder='supsersecretgremlin' name="password" id="password" type='password'}}
-    <div>
-      <button id="button-primary" class="btn pop blue large spacing-bottom2" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
+    <div style="display: flex;">
+      <button id="button-primary" class="btn pop blue large" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
+      <div style="flex-grow: 1;"> </div>
+      <button class="large" style="border: none; background: none;" {{action (transition-to 'reset-password')}}><span>{{t 'button.reset'}}</span></button>
     </div>
   </form>
   <div class="text-center">

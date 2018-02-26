@@ -43,6 +43,7 @@
     "ember-page-title": "^3.2.2",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.18.0",
+    "ember-transition-helper": "^1.0.0",
     "ember-truth-helpers": "^2.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3"
