@@ -10,7 +10,9 @@ export default Route.extend({
   model(){
     return hash({
       settings: get(this, 'ajax').request(`${ENV.apiHost || ''}/api/settings`),
-      user: this.store.find('user', 'me'),
+      user: this.store.find('user', 'me').then(null, () => {
+        // ignore error
+      }),
     })
   }
 });
