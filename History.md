@@ -1,4 +1,10 @@
 
+2.5.0 / 2018-12-09
+==================
+
+  * Upgrading with ember-cli-update #31 from @mansona
+  * improving the social login implementation #31 from @mansona
+
 1.12.0 / 2016-01-19
 ==================
 
@@ -19,7 +25,7 @@
 
   * Merge pull request #14 from Authmaker/feature/linkedInLogin
   * implementing social login feature
-  * fixing a bind-attr 
+  * fixing a bind-attr
   * Merge pull request #13 from Authmaker/feature/previousLocation
   * added previous_location param to sign up flow
 
@@ -27,4 +33,3 @@
 ==================
 * upgrade ember
 * allowing links in account-enabled description
-
