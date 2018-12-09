@@ -13,22 +13,27 @@
         <p class="text-small">{{t "social.terms.signIn"}} <a href={{termsLink}}>{{t "social.terms.link"}}</a></p>
       {{/if}}
     </div>
-    <div class="horizontal-seperator text-center spacing-bottom4">
-      <h4>
-        <span class="text-uppercase pad-x1">{{t "social.optional"}}</span>
-      </h4>
-    </div>
+    {{#unless onlySocialLogins}}
+      <div class="horizontal-seperator text-center spacing-bottom4">
+        <h4>
+          <span class="text-uppercase pad-x1">{{t "social.optional"}}</span>
+        </h4>
+      </div>
+    {{/unless}}
   {{/if}}
-  <form class="spacing-bottom6">
-    {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='your@email.address' name="email" id="email" type='email'}}
-    {{validated-input labelKey='label.password' value=password hasError=(not validations.attrs.password.isTruelyValid) placeholder='supsersecretgremlin' name="password" id="password" type='password'}}
-    <div style="display: flex;">
-      <button id="button-primary" class="btn pop blue large" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
-      <div style="flex-grow: 1;"> </div>
-      <button class="large" style="border: none; background: none;" {{action (transition-to 'reset-password')}}><span>{{t 'button.reset'}}</span></button>
+  {{#unless onlySocialLogins}}
+    <form class="spacing-bottom6">
+      {{validated-input labelKey='label.email' value=email hasError=(not validations.attrs.email.isTruelyValid) placeholder='your@email.address' name="email" id="email" type='email'}}
+      {{validated-input labelKey='label.password' value=password hasError=(not validations.attrs.password.isTruelyValid) placeholder='supsersecretgremlin' name="password" id="password" type='password'}}
+      <div style="display: flex;">
+        <button id="button-primary" class="btn pop blue large" {{action 'signIn'}}><span>{{t 'button.signIn'}}</span></button>
+        <div style="flex-grow: 1;"> </div>
+        <button class="large" style="border: none; background: none;" {{action (transition-to 'reset-password')}}><span>{{t 'button.reset'}}</span></button>
+      </div>
+    </form>
+
+    <div class="text-center">
+      {{#link-to 'signup' (query-params logins=logins) class='btn hollow'}}{{t 'button.signUp'}}{{/link-to}}
     </div>
-  </form>
-  <div class="text-center">
-    {{#link-to 'signup' (query-params logins=logins) class='btn hollow'}}{{t 'button.signUp'}}{{/link-to}}
-  </div>
+  {{/unless}}
 </div>

@@ -228,67 +228,6 @@
   @extend .right;
 }
 
-// Confirm button
-//
-// Add a check icon, colour green
-
-.btn.confirm {
-  @extend .btn.before;
-  @extend .btn.green;
-
-  &:before {
-    @extend .fa-check;
-  }
-}
-
-// Add button
-//
-// Add a plus icon, colour blue
-
-.btn.add {
-  @extend .btn.before;
-  @extend .btn.blue;
-
-  &:before {
-    @extend .fa-plus;
-  }
-}
-
-// Delete button
-//
-// Add a trash icon, colour red
-
-.btn.delete {
-  @extend .btn.before;
-  @extend .btn.red;
-
-  &:before {
-    @extend .fa-trash;
-  }
-}
-
-// Previous & next buttons
-//
-// Add arrows to indicate navigation
-
-.btn.prev {
-  @extend .btn.before;
-
-  &:before {
-    @extend .fa-arrow-circle-left;
-  }
-}
-
-.btn.next {
-  // TODO: figure out why :after won't display icon on buttons
-  // @extend .btn.after;
-  @extend .btn.before;
-
-  &:before {
-    @extend .fa-arrow-circle-right;
-  }
-}
-
 
 // Block button
 // --------------------------------------------------
