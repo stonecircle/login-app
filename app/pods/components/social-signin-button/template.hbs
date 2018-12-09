@@ -1,6 +1,6 @@
 <button class="btn large" {{action "socialLogin" login}}>
   {{#if directLogo}}
-    <img src="/icons/{{directLogo}}.png" class="login-icon"> {{title}}
+    <img src="/icons/{{directLogo}}.png" class="login-icon" alt="Login with {{login}}"> {{title}}
   {{else}}
     {{fa-icon icon=loginIcon class="spacing-right1"}}{{title}}
   {{/if}}
