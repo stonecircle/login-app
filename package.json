@@ -1,6 +1,6 @@
 {
   "name": "@authmaker/login-app",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Login app for Authmaker",
   "repository": "https://github.com/Authmaker/login-app",
   "license": "MIT",
