@@ -28,20 +28,20 @@ export default Controller.extend(Validations, {
 
   actions: {
     resetPassword() {
-      get(this, 'notifications').clearAll()
+      this.notifications.clearAll()
 
       if (!get(this, 'validations.isValid')) {
         const firstError = get(this, 'validations.errors.0');
-        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+        return this.notifications.error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
       }
 
-      return get(this, 'ajax').post(`${ENV.apiHost || ''}/v1/password/reset`, {
+      return this.ajax.post(`${ENV.apiHost || ''}/v1/password/reset`, {
         dataType: 'text',
         data: {
-          email: this.get('email'),
-          resetCode: this.get('code'),
-          password: this.get('password'),
-          passwordConfirmation: this.get('passwordConfirmation'),
+          email: this.email,
+          resetCode: this.code,
+          password: this.password,
+          passwordConfirmation: this.passwordConfirmation,
           redirect_uri: this.get('applicationController.redirect_uri'),
           client_id: this.get('applicationController.client_id')
         }
@@ -49,7 +49,7 @@ export default Controller.extend(Validations, {
         this.transitionToRoute('reset-password.success');
       })
       .catch((err) => {
-        get(this, 'notifications').error(`Error updating password: ${err.payload}`);
+        this.notifications.error(`Error updating password: ${err.payload}`);
       });
     }
   }

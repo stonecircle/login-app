@@ -9,10 +9,10 @@ export default Route.extend({
   ajax: service(),
   model(){
     return hash({
-      settings: get(this, 'ajax').request(`${ENV.apiHost || ''}/api/settings`),
+      settings: this.ajax.request(`${ENV.apiHost || ''}/api/settings`),
       user: this.store.find('user', 'me').then(null, () => {
         // ignore error
       }),
-    })
+    });
   }
 });

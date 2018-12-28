@@ -9,12 +9,12 @@ export default Route.extend({
   i18n: service(),
 
   beforeModel() {
-    get(this, 'ajax').request(`${ENV.apiHost || ''}/i18n`).then((translations) => {
-      get(this, 'i18n').addTranslations('en', translations);
+    this.ajax.request(`${ENV.apiHost || ''}/i18n`).then((translations) => {
+      this.i18n.addTranslations('en', translations);
     })
   },
 
   model() {
-    return get(this, 'ajax').request(`${ENV.apiHost || ''}/settings/login`);
+    return this.ajax.request(`${ENV.apiHost || ''}/settings/login`);
   }
 });
