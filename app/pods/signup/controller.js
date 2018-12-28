@@ -1,7 +1,7 @@
 import { not, alias } from '@ember/object/computed';
 import Controller from '@ember/controller';
 import SocialLogins from '@authmaker/login-app/mixins/social-logins';
-import { get, computed } from '@ember/object';
+import { get } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
 
