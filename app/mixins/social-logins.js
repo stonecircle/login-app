@@ -13,14 +13,14 @@ export default Mixin.create({
   limitSocialLogins: alias('application.model.limitSocialLogins'),
 
   shownSocialLogins: computed('socialLogins.[]', 'logins.[]', function() {
-    const socialLogins = this.get('socialLogins') || [];
+    const socialLogins = this.socialLogins || [];
 
     if(!get(this, 'limitSocialLogins')) {
       return socialLogins;
     }
 
     return socialLogins.filter((login) => {
-      return (this.get('logins') ? this.get('logins').split(',') : []).find(function(allow) {
+      return (this.logins ? this.logins.split(',') : []).find(function(allow) {
         return login === allow;
       });
     });

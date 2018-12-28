@@ -8,7 +8,7 @@ export default Controller.extend({
     options: alias('application.model'),
 
     formLink: computed('options.formLink', function() {
-      let formAttributes = getProperties(get(this, 'model'), 'email', 'displayName', 'originalId');
+      let formAttributes = getProperties(this.model, 'email', 'displayName', 'originalId');
 
       let queryString = Object.keys(formAttributes).map((key) => {
         if (!formAttributes[key]) {

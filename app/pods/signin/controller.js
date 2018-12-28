@@ -20,25 +20,25 @@ export default Controller.extend(Validations, SocialLogins, {
 
   actions: {
     signIn() {
-      get(this, 'notifications').clearAll()
+      this.notifications.clearAll()
 
       if (!get(this, 'validations.isValid')) {
         const firstError = get(this, 'validations.errors.0');
-        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+        return this.notifications.error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
       }
 
-      return get(this, 'ajax').post('/api/login', {
+      return this.ajax.post('/api/login', {
         dataType: 'text',
         data: {
-          email: this.get('email'),
-          password: this.get('password')
+          email: this.email,
+          password: this.password
         },
       }).then(() => {
         //success
         location.reload();
       })
       .catch((err) => {
-        get(this, 'notifications').error(`Error signing in: ${err.payload.message}`);
+        this.notifications.error(`Error signing in: ${err.payload.message}`);
       });
     }
   }

@@ -1,12 +1,14 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { get } from '@ember/object';
+import fetch from 'fetch';
 
 import ENV from '@authmaker/login-app/config/environment';
 
 export default Route.extend({
   ajax: service(),
   model() {
-    return get(this, 'ajax').request(`${ENV.apiHost || ''}/api/settings`);
+    return fetch(`${ENV.apiHost || ''}/settings`).then(function(response) {
+      return response.json();
+    });
   }
 });

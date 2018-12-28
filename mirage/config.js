@@ -1,11 +1,4 @@
-import ENV from '@authmaker/login-app/config/environment';
-
 export default function() {
-  // properly namespaces urls
-  this.urlPrefix = `${ENV.apiHost}/${ENV.apiNamespace}`;
-  this.passthrough();
-
-  this.urlPrefix = `${ENV.apiHost}/`;
 
   // These comments are here to help you get started. Feel free to delete them.
 
@@ -15,9 +8,9 @@ export default function() {
     Note: these only affect routes defined *after* them!
   */
 
-  // this.urlPrefix = '';     make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';     make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;       delay for each request, automatically set to 0 during testing
+  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
+  // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
+  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   /*
     Shorthand cheatsheet:
@@ -28,9 +21,8 @@ export default function() {
     this.put('/posts/:id'); // or this.patch
     this.del('/posts/:id');
 
-    http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
+    http://www.ember-cli-mirage.com/docs/v0.4.x/shorthands/
   */
-
   this.get('/i18n', () => {
     return {
       "brand": {
@@ -173,5 +165,22 @@ export default function() {
     }
   });
 
-  this.passthrough();
+  this.get('/settings', () => {
+    return {
+      authmaker: {
+        "domain": "https://auth.authmaker.app",
+        "appDomain": "https://app.authmaker.com",
+        "app_name": "Authmaker Dashboard"
+      }
+    }
+  });
+
+  this.get('/v1/users/me', () => {
+    return {
+      data: {
+        id: 'me',
+        type: 'users'
+      }
+    }
+  })
 }

@@ -1,16 +1,16 @@
 import Component from '@ember/component';
-import { get, computed } from '@ember/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   directLogo: computed('login', function() {
-    switch(get(this, 'login')) {
+    switch(this.login) {
       case 'freeagent':
-        return get(this, 'login');
+        return this.login;
     }
   }),
 
   loginIcon: computed('login', function() {
-    return `${get(this, 'login')}-square`;
+    return `${this.login}-square`;
   }),
 
   actions: {

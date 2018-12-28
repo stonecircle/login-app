@@ -19,17 +19,17 @@ export default Controller.extend(Validations, {
 
   actions: {
     resetPassword() {
-      get(this, 'notifications').clearAll();
+      this.notifications.clearAll();
 
       if (!get(this, 'validations.isValid')) {
         const firstError = get(this, 'validations.errors.0');
-        return get(this, 'notifications').error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
+        return this.notifications.error(`${get(firstError, 'attribute')}: ${get(firstError, 'message')}`);
       }
 
-      return get(this, 'ajax').post(`${ENV.apiHost || ''}/v1/password/requestReset`, {
+      return this.ajax.post(`${ENV.apiHost || ''}/v1/password/requestReset`, {
         dataType: 'text',
         data: {
-          email: this.get('email'),
+          email: this.email,
           redirectUri: this.get('applicationController.redirect_uri'),
           clientId: this.get('applicationController.client_id')
         },
@@ -37,7 +37,7 @@ export default Controller.extend(Validations, {
       .then(() => {
         this.transitionToRoute('reset-password.reset-sent');
       }).catch((err) => {
-        get(this, 'notifications').error(`Error resetting password: ${err.payload}`);
+        this.notifications.error(`Error resetting password: ${err.payload}`);
       });
     }
   }
